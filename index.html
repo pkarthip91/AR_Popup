@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-  
+
   <!-- <link rel="stylesheet" href="demo-styles.css"> -->
   <!-- <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   <script src="./_model-viewer_ Interactive Example_files/focus-visible.js.download" defer=""></script> -->
@@ -195,7 +195,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Select Car</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body">
       <iframe src="vector.html"></iframe>
@@ -214,12 +214,12 @@
             ar-scale="fixed" 
             alt="Select Car">
            
-            <!-- <button  id="ar-button">
+            <!-- <button  id="ar-button" data-bs-dismiss="modal" aria-label="Close">
               Proceed 1
             </button> -->
       
-            <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 
+            <button slot="ar-button" class="hide-apped" id="ar-button" data-bs-dismiss="modal" aria-label="Close">
+              Proceed 1
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -455,8 +455,8 @@
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
         $('body').removeClass("modal-open").addClass('overflow-auto');
-        $('.modal').removeClass('show')
-        $('.modal-backdrop').removeClass('show')
+        // $('.modal').removeClass('show')
+        // $('.modal-backdrop').removeClass('show')
       //  window.location.reload(true)
    
         // updateOrientation();
