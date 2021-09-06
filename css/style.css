@@ -89,10 +89,10 @@ model-viewer {
 
 
 /* This keeps child nodes hidden while the element loads */
-
+/* 
  :not(:defined)>* {
     display: none;
-}
+} */
 
 model-viewer {
     background-color: #fff;
@@ -1067,6 +1067,7 @@ model-viewer#imgSize {
 .select-car-model{
     background: #fff;
     margin-top: 20px;
+    width: 100%;
     /* position: relative;
     bottom: 30px; */
     /* z-index: 999999; */
