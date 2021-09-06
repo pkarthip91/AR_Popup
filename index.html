@@ -216,7 +216,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 3
+              Proceed 5
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -347,6 +347,25 @@
 
 
   <script type="module">
+
+async function shutdownXR(session) {
+  if (session) {
+    await session.end();
+    window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
+    /* At this point, WebXR is fully shut down */
+  }
+}
+
+
+XRSession.addEventListener("end", function(event) {
+  window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
+  /* the session has shut down */
+});
+
+XRSession.onend = function(event) {
+  window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
+ /* the session has shut down */
+}
   
 
     // document.getElementById('videoPlay').play();
@@ -393,11 +412,6 @@
     });
     
 
-    const modelViewerClose= document.querySelector("model-viewer#imgSize");
-    if (modelViewerClose === false){
-        window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
-        location.reload(true);
-    }
 
   
     // Quick Look modes change animation
@@ -419,8 +433,8 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
-         window.location.assign("https://pkarthip91.github.io/AR_Popup/");
-        location.reload(true);
+         //window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+       // location.reload(true);
       });
 
       //Toggle fullscree
