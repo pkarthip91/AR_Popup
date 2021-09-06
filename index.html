@@ -216,7 +216,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 4
+              Proceed 5
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -400,7 +400,6 @@
     }
 
   
-  
     // Quick Look modes change animation
     // const modelViewerImage = document.querySelector("model-viewer#imgSize");
     // modelViewerImage.addEventListener("load", (ev) => {
@@ -420,13 +419,9 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
-       // window.location.assign("https://pkarthip91.github.io/AR_Popup/");
-        //location.reload(true);
+         window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+        location.reload(true);
       });
-
-      $(window).bind("unload", function() {
-        window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
-     });
 
       //Toggle fullscree
       $(".chat-bot-icon").click(function (e) {
@@ -448,6 +443,7 @@
         $(".rounded-circle-btn").css("display", "block");
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
+        $('.modal').css("display", "none").location.reload(true);;
         // updateOrientation();
       });
 
