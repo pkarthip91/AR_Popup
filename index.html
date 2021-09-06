@@ -216,7 +216,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 2
+              Proceed 3
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -394,7 +394,8 @@
     
 
     const modelViewerClose= document.querySelector("model-viewer#imgSize");
-    if (modelViewerClose === false){
+    if (modelViewerClose == false){
+      alert('k')
         window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
         location.reload(true);
     }
