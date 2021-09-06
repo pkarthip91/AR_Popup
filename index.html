@@ -219,7 +219,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 3
+              Proceed 4
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -429,7 +429,7 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
-         window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+         //window.location.assign("https://pkarthip91.github.io/AR_Popup/");
         location.reload(true);
       });
 
@@ -445,7 +445,7 @@
     $(document).ready(function () {
      
       $("#ar-button").click(function (e) {
-      
+  
         document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1_Pos0.glb");
         //document.getElementById("imgSize").setAttribute("ios-src", "./img/glb/613500_Thule_Vector_Alpine_hp_V1.usdz");
         $("#hide-btn-main").css("display", "block");
@@ -456,7 +456,6 @@
         document.getElementById("imgSize").style.height = "42px"
         document.getElementById("ar-button").setAttribute("data-bs-dismiss", "modal");
         document.getElementById("ar-button").setAttribute("aria-label", "Close");
-
         // data-bs-dismiss="modal" aria-label="Close"
         // $('body').removeClass("modal-open").addClass('overflow-auto');
         // $('.modal').removeClass('show')
