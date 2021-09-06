@@ -122,7 +122,7 @@
                       <input class="form-check-input" type="radio" autocomplete="off">
                     </label>
                   </div>
-                  <div class="product-name">Thule Vector M</div>
+                  <div class="product-name">Thule Vector </div>
                   <p class="font-10-desc">A cargo box like no other that perfectly pairs performance</p>
                   <div class="d-flex align-items-center justify-content-center price mt-2">
                     <!-- <div class="del mr-2"><span class="text-dark">$2,399.95 </span></div> -->
@@ -148,7 +148,7 @@
                   alt=""> </div>
               <div class="card-body pt-3">
                 <div class="ar-button-action">
-                  <a id="vectorGlb" data-bs-toggle="modal" data-bs-target="#exampleModal" title="View AR" class="custom-btn-ar"><img class="icon-size" src="img/arView.png"/></a>
+                  <a id="motionGlb" data-bs-toggle="modal" data-bs-target="#exampleModal" title="View AR" class="custom-btn-ar"><img class="icon-size" src="img/arView.png"/></a>
                   <!-- <a id="motionGlb" href="vector.html" title="View AR" class="custom-btn-ar"><img class="icon-size" src="img/arView.png"/></a> -->
                 </div>
                 <!-- <div class="text-muted text-center mt-auto">Available Colors</div> -->
@@ -216,7 +216,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 1
+              Proceed 2
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -433,9 +433,13 @@
     });
 
     $(document).ready(function () {
+
+      $("#vectorGlb, #motionGlb").click(function (e) {
+        $('.modal').show();
+        console.log("show")
+      });
      
       $("#ar-button").click(function (e) {
-      
         document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1_Pos0.glb");
         //document.getElementById("imgSize").setAttribute("ios-src", "./img/glb/613500_Thule_Vector_Alpine_hp_V1.usdz");
         $("#hide-btn-main").css("display", "block");
@@ -446,7 +450,9 @@
         document.getElementById("imgSize").style.height = "42px"
         $('body').removeClass("modal-open").addClass('overflow-auto');
         $('.modal').removeClass('show')
-        $('.modal-backdrop').removeClass('show')
+        $('.modal').hide()
+        $('.modal-backdrop').hide()
+        // $('.modal-backdrop').removeClass('show')
       //  window.location.reload(true)
    
         // updateOrientation();
