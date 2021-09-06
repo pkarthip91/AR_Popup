@@ -1,1221 +1,521 @@
- /* Import Fonts */
-
-
- /* Rest CSS */
- * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 14px;
-    color: #121212;
-}
-
-html {
-    height: 100%;
-    width: 100%;
-}
-
-body {
-    height: 100%;
-    width: 100%;
-    margin-top: 20px;
-    
-}
-
-
- /* ModelViewer CSS */
-
-model-viewer {
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-}
-
-#ar-button:active {
-    background-color: #E8EAED;
-}
-
-#ar-button:focus {
-    outline: none;
-}
-
-#ar-button:focus-visible {
-    outline: 1px solid #4285f4;
-}
-
-#ar-prompt {
-    display: none;
-}
-
-#ar-prompt img {
-    width: 150px;
-
-}
-.product-more {
-    position: absolute;
-    bottom: 30%;
-    left: 0;
-    right: 0;
-}
-
-.custom-banner {
-    background-color: #5c5d78;
-    color: white;
-    font-weight: bold;
-    margin: 120px auto;
-    height: 150px;
-    width: 200px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-#menu {
-    line-height: 30px;
-    margin: auto;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    bottom: 0;
-    background: #ffffff;
-    position: absolute;
-    display: none;
-    border-top-right-radius: 50px;
-    border-top-left-radius: 30px;
-    box-shadow: 0 0 9px 5px rgb(223 223 223 / 25%);
-    list-style-type: none;
-    left: 0;
-}
-
-
-/* This keeps child nodes hidden while the element loads */
-/* 
- :not(:defined)>* {
-    display: none;
-} */
-
-model-viewer {
-    background-color: #fff;
-    overflow-x: hidden;
-}
-.select-car-model{
-    background-color: #fff;
-}
-
-#ar-button {
-    /* background-image: url(../img/expand.png);
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: 12px 50%; */
-    background-color: #3577ad;
-    color: #ffffff;
-    border-radius: 4px;
-    border: 1px solid #3577ad;
-    width: 85%;
-    margin: 0px 30px;
-    padding: 10px;
-    position: absolute;
-    z-index: 99999999;
-    transform: rotate(0deg);
-}
-/* #close-model{
-    display: none;
-} */
-
-.rounded-circle-btn{
-    background: #ffffff;
-    color: #222222;
-    border: 1px solid #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    display: none;
-    z-index: 9999999;
-}
-.toggle-control-main{
-    margin-bottom: 25px;
-}
-
-#ar-button:active {
-    background-color: #E8EAED;
-}
-
-#ar-button:focus {
-    outline: none;
-}
-
-#ar-button:focus-visible {
-    outline: 1px solid #4285f4;
-}
-
- /* Loading Camera Button*/
-
-@keyframes circle {
-    from {
-        transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
-    }
-    to {
-        transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
-    }
-}
-
-@keyframes elongate {
-    from {
-        transform: translateX(100px);
-    }
-    to {
-        transform: translateX(-100px);
-    }
-}
-
-model-viewer>#ar-prompt {
-    position: absolute;
-    left: 30%;
-    bottom: 350px;
-    animation: elongate 5s infinite ease-in-out alternate;
-
-}
-
-model-viewer[ar-status="session-started"]>#ar-prompt {
-    display: block;
-}
-
-model-viewer>#ar-prompt>img {
-    animation:  5s linear infinite;
-}
-
-model-viewer>#ar-failure {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 150px;
-    display: none;
-}
-
-model-viewer[ar-tracking="not-tracking"]>#ar-failure {
-    display: block;
-}
-
-
-/* chat Screen */
-.chat-screen.size-ios{
-    visibility: visible;
-    width: 100%;
-    overflow: hidden;
-    position: inherit;
-    height: 100%;
-    background: inherit;
-    box-shadow: none;
-}
-.right-rounded-btn .chat-screen.size-ios .btn.btn-white {
-    border: 1px solid rgb(101 101 101 / 54%);
-    background: #f3f3f3;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    padding: 0;
-}
-
-.chat-screen.size-ios .chat-mail {
-    padding: 10px 0;
-}
-
-/* .right-rounded-btn .chat-screen.size-ios .btn.btn-white {
-    width: 50px;
-    height: px;
-} */
-
-.chat-screen.size-ios .color-section {
-    border-left: 0px solid;
-}
-
-.chat-screen {
-    position: fixed;
-    bottom: 68px;
-    left: 20px;
-    z-index: 9999;
-    width: 370px;
-    background: #fff;
-    box-sizing: border-box;
-    border-radius: 15px;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-    visibility: hidden;
-    height: 170px;
-    overflow: auto;
-}
-.chat-screen.show-chat {
-    -moz-transition: bottom 0.5s linear;
-    -webkit-transition: bottom 0.5s linear;
-    transition: bottom 0.5s linear;
-    visibility: visible;
-    bottom: 100px;
-}
-.size-icons{
-    z-index: 99999;
-    position: relative;
-}
-.chat-screen .chat-header {
-    background-image: linear-gradient(to right, #673ab7, #813bcb, #9e38de, #bc32ef, #dc22ff);
-    border-radius: 15px 15px 0 0;
-    padding: 15px;
-    display: block;
-}
-.chat-screen .chat-header .chat-header-title {
-    display: inline-block;
-    width: calc(100% - 50px);
-    color: #fff;
-    font-size: 14px;
-}
-.chat-screen .chat-header .chat-header-option {
-    display: inline-block;
-    width: 44px;
-    color: #fff;
-    font-size: 14px;
-    text-align: right;
-}
-.chat-screen .chat-header .chat-header-option .dropdown .dropdown-toggle svg {
-    color: #fff;
-}
-.chat-screen .chat-mail {
-    padding: 10px;
-    display: block;
-}
-.chat-screen .chat-mail input.form-control {
-    border-radius: 30px;
-    border: 1px solid #e1e1e1;
-    color: #3b3f5c;
-    font-size: 14px;
-    padding: 0.55rem 1.25rem;
-}
-.chat-screen .chat-mail input.form-control:focus {
-    box-shadow: none;
-    border: 1px solid #add5fc;
-}
-.chat-screen .chat-mail .select2 .selection .select2-selection .select2-selection__rendered {
-    border-radius: 30px;
-    border: 1px solid #e1e1e1;
-    height: calc(1.28em + 1.28rem + 2px);
-    padding: 9px 20px;
-    font-size: 14px;
-}
-.chat-screen .chat-mail .select2.select2-container--open .selection .select2-selection {
-    box-shadow: none;
-    border-radius: 30px;
-}
-.chat-screen .chat-mail button {
-    background-image: linear-gradient(to right, #673ab7, #813bcb, #9e38de, #bc32ef, #dc22ff);
-    border: none;
-    padding: 7px;
-    transition: transform 0.5s ease;
-}
-.chat-screen .chat-mail .form-group {
-    margin-bottom: 1.5rem;
-}
-.chat-screen .chat-body {
-    padding: 25px;
-    display: inline-block;
-    min-height: 382px;
-    max-height: 382px;
-    background: #fbfbfb;
-}
-.chat-screen .chat-body .chat-start {
-    border: 1px solid #f8d4ff;
-    width: 150px;
-    border-radius: 50px;
-    padding: 6px 10px;
-    font-size: 12px;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: 15px;
-    background: #fff;
-}
-.chat-screen .chat-body .chat-bubble {
-    font-size: 12px;
-    padding: 10px 15px;
-    box-shadow: none;
-    display: inline-block;
-    clear: both;
-    margin-bottom: 10px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.02);
-}
-.chat-screen .chat-body .chat-bubble.you {
-    background-image: linear-gradient(to right, #673ab7, #813bcb, #9e38de, #bc32ef, #dc22ff);
-    color: #fff;
-    border-radius: 0 15px 15px 15px;
-    align-self: flex-start;
-    display: table;
-}
-.chat-screen .chat-body .chat-bubble.me {
-    background-image: linear-gradient(to right, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
-    color: #888ea8;
-    border-radius: 15px 0px 15px 15px;
-    float: right;
-    align-self: flex-end;
-    display: table;
-}
-.chat-screen .chat-input {
-    width: 100%;
-    position: relative;
-    margin-bottom: -5px;
-}
-.chat-screen .chat-input input {
-    width: 100%;
-    background: #ffffff;
-    padding: 15px 70px 15px 15px;
-    border-radius: 0 0 15px 15px;
-    resize: none;
-    border-width: 1px 0 0 0;
-    border-style: solid;
-    border-color: #f8f8f8;
-    color: #7a7a7a;
-    font-weight: normal;
-    font-size: 13px;
-    transition: border-color 0.5s ease;
-}
-.chat-screen .chat-input input:focus {
-    border-color: #f9dcff;
-}
-.chat-screen .chat-input input:focus + .input-action-icon a svg.feather-send {
-    color: #bc32ef;
-}
-.chat-screen .chat-input .input-action-icon {
-    width: 61px;
-    white-space: nowrap;
-    position: absolute;
-    z-index: 1;
-    top: 15px;
-    right: 15px;
-    text-align: right;
-}
-.chat-screen .chat-input .input-action-icon a {
-    display: inline-block;
-    margin-left: 5px;
-    cursor: pointer;
-}
-.chat-screen .chat-input .input-action-icon a svg {
-    height: 17px;
-    width: 17px;
-    color: #a9a9a9;
-}
-.chat-screen .chat-session-end {
-    display: block;
-    width: 100%;
-    padding: 25px;
-}
-.chat-screen .chat-session-end h5 {
-    font-size: 17px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 20px;
-}
-.chat-screen .chat-session-end p {
-    font-size: 14px;
-    text-align: center;
-    margin: 20px 0;
-}
-.chat-screen .chat-session-end .rate-me {
-    width: 120px;
-    margin: 40px auto;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble {
-    display: inline-block;
-    text-align: center;
-    width: 50px;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble span {
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    display: block;
-    line-height: 46px;
-    cursor: pointer;
-    transition: transform 0.5s ease;
-    margin-bottom: 7px;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble span:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble.great {
-    margin-right: 12px;
-    color: #43cc6c;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble.great span {
-    background: #43cc6c;
-    border-radius: 50px 50px 0 50px;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble.bad {
-    color: #ef4252;
-}
-.chat-screen .chat-session-end .rate-me .rate-bubble.bad span {
-    background: #ef4252;
-    border-radius: 50px 50px 50px 0;
-}
-.chat-screen .chat-session-end .transcript-chat {
-    display: block;
-    text-align: center;
-    margin-top: 80px;
-    color: #0768f8;
-    text-decoration: underline;
-    line-height: 20px;
-}
-.chat-screen .powered-by {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 12px;
-}
-.chat-bot-icon {
-    transition: all 0.5s ease;
-}
-.animate-img{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    font-size: 12px;
-}
-.chat-bot-icon .animate-img.hide , .chat-bot-icon span.hide  {
-  display: none;
-}
-.chat-bot-icon svg {
-    color: #0071fe;
-    -moz-transition: all 0.5s linear;
-    -webkit-transition: all 0.5s linear;
-    transition: transform 0.5s linear;
-    opacity: 0;
-    z-index: -1;
-}
-.chat-bot-icon svg.animate , .chat-bot-icon img.animate  {
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-    opacity: 1;
-    z-index: 1;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.ar-quicklook{
-    z-index: 99999999;
-    position: absolute;
-}
-
-/* .table-btn{
- 
-    text-align: center;
-    bottom: 5%;
-    position: absolute;
-    right: 0;
-    left: 0;
-
-} */
-
-.up-down{
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-}
-
-.expand-iocns img{
-width: 20px;
-}
-
-.slider-next{
-    text-align: center;
-    position: absolute;
-    top: 5%;
-    right: 0;
-    left: 0;
-}
-
-.form-select.custom-select{
-    width: inherit;
-}
-
-.switch input {
-    display: none;
-}
-.switch {
-    position: relative;
-    width: 120px;
-    height: 30px;
-    line-height: 30px;
-    margin: -10px 0;
-}
-  .on
-  {
-    display: none;
-    padding-left: 10px;
-    line-height: 33px;
-    text-align: left;
-  }
-
-  .on, .off
-  {
-    color: white;
-    /* position: absolute; */
-
-    top: 50%;
-    left: 50%;
-    font-size: 12px;
-  }
-
-  .off
-  {
-    margin-left: 25px;
-  }
-
-  input:checked+ .slider .on
-  {display: block;}
-
-  input:checked + .slider .off
-  {display: none;}
-
-  input:checked + .slider {
-    background-color: #2ab934;
-}
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ca2222;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 24px;
-    width: 24px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(90px);
-    -ms-transform: translateX(90px);
-    transform: translateX(90px);
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-.toggle-control {
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    display: inline-block;
-}
-
-.toggle-control input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-[type=checkbox], [type=radio] {
-    box-sizing: border-box;
-    padding: 0;
-}
-
-.toggle-control .control {
-    height: 15px;
-    width: 40px;
-    border-radius: 25px;
-    background-color: #e1e1e1;
-    transition: background-color 0.15s ease-in;
-    display: inline-block;
-}
-
-.toggle-control .control:after {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 8px;
-    width: 20px;
-    height: 20px;
-    border-radius: 25px;
-    background: #0067ff;
-    transition: left 0.15s ease-in;
-}
-.toggle-control input:checked ~ .control:after {
-    left: 40px;
-}
-.toggle-control input:checked ~ .control {
-    background-color: dodgerblue;
-}
-
-  [disabled] {
-    opacity: 0.9;
-}
-.cars-btn span{
-    font-size: 10px;
-    margin-top: -2px;
-    display: inherit;
-    
-}
-.full-screen-img{
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #63a4ff;
-    background-image: linear-gradient(
-        315deg
-        , #d7e5fa 0%, #eafeff 74%);
-}
-.btn-img-bg{
-    background: rgb(255 255 255 / 26%);
-    padding: 0 10px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-}
-.color-section{
-    border-left: 1px solid;
-}
-
-/* .right-rounded-btn{
-    text-align: center;
-    bottom: 5%;
-    position: absolute;
-    right: 30px;
-     left: inherit;
-    top: 5%;
-    height: 100%;
-} */
-
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-  }
-  .btn-circle.btn-lg {
-    width: 50px;
-    height: 50px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
-    border-radius: 25px;
-  }
-  .btn-circle.btn-xl {
-    width: 70px;
-    height: 70px;
-    padding: 10px 16px;
-    font-size: 24px;
-    line-height: 1.33;
-    border-radius: 35px;
-  }
-
-  .right-rounded-btn .btn{
-    display: inherit;
-    margin: 10px 0;
-    height: 50px;
-    width: 50px;
-  }
-  .right-rounded-btn .btn i{
-    font-size: 25px;
-    color: #3577ad;
-  }
-  
-  .right-rounded-btn.btn-bottom{
-    right: 90px;
-  }
-  .right-rounded-btn .btn.btn-lock-unlock{
-    height: 70px;
-    width: 70px;
-  }
-  .right-rounded-btn .btn.btn-white{
-    background: #eeeeee;
-    color: #0d6efd;
-    border: 1px solid #fff;
-  }
-.slides-mk  .btn.btn-white {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-
-  .right-rounded-btn .btn.btn-white-opcity {
-    background: rgb(238 247 253);
-    color: #ffffff;
-    border: 1px solid rgb(255 255 255 / 0%);
-    color: #1382ff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15px;
-}
-  .right-rounded-btn .btn.btn-white-opcity i{
-    color: #b2b2b2;
-    font-size: 15px;
-
-  }
-  .right-rounded-btn .bottom-icons{
-    bottom:20px;
-    position: absolute;
-    left: 10px;
-    z-index: 99999;
-  }
-  .center-icons-lock{
-    align-items: center;
-    justify-content: center;
-    display: inline-flex;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .right-rounded-btn .chat-screen .btn.btn-white{
-    font-size: 12px;
-    color: #000;
-    border: 1px solid rgb(255 255 255 / 0%);
-    margin: 2px;
-    width: 55px;
-    height: 55px;
-  }
-  .right-rounded-btn .chat-screen .btn.btn-white.active-color{
-    border: 2px solid #ff2121;
-    box-shadow: 0 0 0 0.25rem rgb(255 96 96 / 13%);
-  }
-
-
-  .right-rounded-btn .chat-screen .btn.btn-white.btn-primary:focus {
-    box-shadow: 0 0 0 0.25rem rgb(255 96 96 / 13%);
-}
-  .right-rounded-btn .chat-screen .btn.btn-white.color-black{
-background-color: #030000;
-  }
-
-  .right-rounded-btn .chat-screen .btn.btn-white.color-gray{
-    background-color: #434343;
-  }
-
-  .right-rounded-btn .chat-screen .btn.btn-white.color-white{
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-  }
-  .right-rounded-btn .chat-screen .btn.btn-white.color-white.active-color{
-    border: 2px solid #ff2121;
-  }
-
-
-
-  /* .right-rounded-btn {
-      display: none;
-  } */
-
-
-
-  /* #modelSrcImg{
-      visibility: hidden;
-      height: 50px;
-  } */
-
-  #default-poster {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    border: none;
-    padding: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #e3e3e3;
-    background-image: var(--poster-image, none);
-    z-index: 99999;
-}
-
-
-  @media only screen and (orientation:portrait){
-    model-viewer {
-      height: 1000px;
-      width: 100%;
-      /* transform: rotate(90deg); */
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Main Styles Including -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/thule.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- <link rel="stylesheet" href="demo-styles.css"> -->
+  <!-- <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+  <script src="./_model-viewer_ Interactive Example_files/focus-visible.js.download" defer=""></script> -->
+</head>
+
+<body>
+
+  <div class="container mt-3">
+    <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
+      <div class="pl-lg-0 pl-auto">
+        <div class="col-xs-12 filter-listing-text">
+          <h2 class="heading3">Rooftop cargo carriers</h2>
+          <div class="category-description">
+            <p>Thule’s wide range of rooftop cargo carriers fits every need – whether you’re living an active lifestyle,
+              going on vacation, or just need extra space.</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 filters-applied"></div>
+          </div>
+          <div class="col-xs-12 resultarea hidden-xs hidden-sm">
+            <span id="main_0_mainframed_3_lblResults">Results</span><span></span><span
+              class="value filter-total-amount">: 21</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-5 mobile-top-2">
+      <div class="mobile-show">
+        <div class="btn-mobile-show">
+          <button type="button" id="show-toggle" class="btn btn-sm btn-primary visible-xs">
+            <span><i class="fas fa-bars"></i></span>
+          </button>
+        </div>
+      </div>
+
+      <div id="filterbar" class="hide-mobile col-md-3 col-sm-4 mb-5">
+        <!-- <div class="box border-bottom">
+                <div class="form-group text-center">
+                    <div class="btn-group" data-toggle="buttons"> <label class="btn btn-success form-check-label"> <input class="form-check-input" type="radio"> Reset </label> <label class="btn btn-success form-check-label active"> <input class="form-check-input" type="radio" checked> Apply </label> </div>
+                </div>
+                <div> <label class="tick">New <input type="checkbox" checked="checked"> <span class="check"></span> </label> </div>
+                <div> <label class="tick">Sale <input type="checkbox"> <span class="check"></span> </label> </div>
+            </div> -->
+        <div class="box border-bottom">
+          <div class="box-label text-uppercase d-flex align-items-center">Cargo carrier size <button class="btn ml-auto"
+              type="button" data-toggle="collapse" data-target="#inner-box" aria-expanded="false"
+              aria-controls="inner-box" id="out" onclick="outerFilter()"> <span class="fas fa-plus"></span> </button>
+          </div>
+          <div id="inner-box" class=" mt-2 mr-1">
+            <div class="my-1"> <label class="tick">Small (2) <input type="checkbox" checked="checked"> <span
+                  class="check"></span> </label> </div>
+            <div class="my-1"> <label class="tick">Medium <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Large <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">X-Large <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">XX-Large <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+          </div>
+        </div>
+        <div class="box border-bottom">
+          <div class="box-label text-uppercase d-flex align-items-center">Cargo carrier length <button
+              class="btn ml-auto" type="button" data-toggle="collapse" data-target="#inner-box2" aria-expanded="false"
+              aria-controls="inner-box2"><span class="fas fa-plus"></span></button> </div>
+          <div id="inner-box2" class=" mt-2 mr-1">
+            <div class="my-1"> <label class="tick">Short (2) <input type="checkbox" checked="checked"> <span
+                  class="check"></span> </label> </div>
+            <div class="my-1"> <label class="tick">Medium (7) <input type="checkbox"> <span class="check"></span>
+              </label> </div>
+            <div class="my-1"> <label class="tick">Long (9) <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="products" class="my-5">
+        <div class="row mx-0">
+          <div class="col-lg-6 col-md-6">
+            <div class="card d-flex flex-column align-items-center cargo-main mb-5">
+              <div class="top-tump">
+                <img src="./img/top-Tump.jpg" alt="">
+              </div>
+
+              <div class="card-img">
+                <img
+                  src="https://cdn1.static-tgdp.com/ui/productimages/approved/std.lang.all/59/34/685934_sized_480x1000_rev_2.jpg"
+                  alt="">
+              </div>
+
+              <div class="card-body pt-3">
+                <div class="ar-button-action">
+                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                  </button> -->
+                  <a id="vectorGlb" data-bs-toggle="modal" data-bs-target="#exampleModal" title="View AR" class="custom-btn-ar"><img class="icon-size" src="img/arView.png"/></a>
+                </div>
+
+                <!-- <div class="text-muted text-center mt-auto">Available Colors</div> -->
+                <div class="colors my-2 text-center">
+                  <div class="btn-group mt-0 mb-3" data-toggle="buttons" data-tooltip="tooltip" data-placement="right"
+                    title="choose color">
+                    <label class="btn btn-black form-check-label active">
+                      <input class="form-check-input" type="radio" autocomplete="off">
+                    </label>
+                    <label class="btn btn-gray form-check-label">
+                      <input class="form-check-input" type="radio" autocomplete="off">
+                    </label>
+                  </div>
+                  <div class="product-name">Thule Vector </div>
+                  <p class="font-10-desc">A cargo box like no other that perfectly pairs performance</p>
+                  <div class="d-flex align-items-center justify-content-center price mt-2">
+                    <!-- <div class="del mr-2"><span class="text-dark">$2,399.95 </span></div> -->
+                    <div class="font-weight-bold font-16">$1,399.95 </div>
+                  </div>
+                  <div class="btn tag-manager-add-to-cart-button thule-btn-shop">
+                    <span class="btn-icon-wrapper">
+                      <i class="fa fa-fw frg-icon-cart-notice" aria-hidden="true"></i>
+                    </span>
+                    <div class="btn-text text-red">Temporarily out of stock on Thule.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="card d-flex flex-column align-items-center cargo-main mb-5">
+              <div class="top-tump">
+                <img src="https://cdn1.static-tgdp.com/ui/productimages/approved/std.lang.all/_r/gb/if_designaward2017red_l_rgb_sized_100x60_rev_1.jpg" alt="">
+              </div>
+              <div class="card-img"> <img
+                  src="https://cdn1.static-tgdp.com/ui/productimages/approved/std.lang.all/93/12/549312_sized_480x1000_rev_1.jpg"
+                  alt=""> </div>
+              <div class="card-body pt-3">
+                <div class="ar-button-action">
+                  <a id="motionGlb" data-bs-toggle="modal" data-bs-target="#exampleModal" title="View AR" class="custom-btn-ar"><img class="icon-size" src="img/arView.png"/></a>
+                  <!-- <a id="motionGlb" href="vector.html" title="View AR" class="custom-btn-ar"><img class="icon-size" src="img/arView.png"/></a> -->
+                </div>
+                <!-- <div class="text-muted text-center mt-auto">Available Colors</div> -->
+                <div class="colors my-2 text-center">
+                  <div class="btn-group mt-0 mb-3" data-toggle="buttons" data-tooltip="tooltip" data-placement="right"
+                    title="choose color">
+                    <label class="btn btn-black form-check-label active">
+                      <input class="form-check-input" type="radio" autocomplete="off">
+                    </label>
+                    <label class="btn btn-gray form-check-label">
+                      <input class="form-check-input" type="radio" autocomplete="off">
+                    </label>
+                  </div>
+                  <div class="product-name">Thule Motion XT XL</div>
+                  <p class="font-10-desc">Stylish and spacious roof-mounted cargo box, optimized for ease of use.</p>
+                  <div class="d-flex align-items-center justify-content-center price mt-2">
+                    <!-- <div class="del mr-2"><span class="text-dark">$2,399.95 </span></div> -->
+                    <div class="font-weight-bold font-16">799.95 </div>
+                  </div>
+                  <div class="btn tag-manager-add-to-cart-button thule-btn-shop">
+                    <span class="btn-icon-wrapper">
+                      <i class="fa fa-fw frg-icon-cart-notice" aria-hidden="true"></i>
+                    </span>
+                    <div class="btn-text text-red">Temporarily out of stock on Thule.com</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Car</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <iframe src="vector.html"></iframe>
+      </div>
+      <div class="modal-footer">
+        <div class="select-car-model">
+          <model-viewer id="imgSize" 
+            data-js-focus-visible 
+            camera-controls 
+            src="" 
+            ar disable-zoom autoplay
+            shadow-intensity="0" 
+            slot="progress-bar exit-webxr-ar-button interaction-prompt" 
+            ar-placement="floor"
+            ar-modes="webxr quick-look" 
+            ar-scale="fixed" 
+            alt="Select Car">
+           
+            <!-- <button  id="ar-button">
+              Proceed 1
+            </button> -->
       
-    }
+            <button slot="ar-button" class="hide-apped" id="ar-button">
+              Proceed 2
+            </button>
+      
+            <button class="rounded-circle-btn ar-visible d-none" id="close-model">
+              <i class="fas fa-times"></i>
+            </button>
+      
+            <div id="ar-prompt">
+              <img src="img/hand.png">
+            </div>
+      
+            <div style="display: none;" id="hide-btn-main" class="right-rounded-btn table-btn">
+              <div class="slider-m btn-img-bg">
+                <div class="slides-mk">
+                  <label class="toggle-control-main d-none">
+                    <div class="d-none"><input id="roll" value="0" size="3" class="number"></div>
+                    <div class="d-none"><input id="pitch" value="0" size="3" class="number"></div>
+                    <!-- <input classname="checkbox" type="checkbox" id="yaw" value="0" size="3" class="number"> -->
+                    <button class="d-none" id="frame">Update Framing</button>
+                    <div class="ar-visible d-none form-check form-switch">
+                      <input class="form-check-input number" type="checkbox" id="yaw" value="270" size="3"
+                        id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                    </div>
+                  </label>
+                  <!-- <button type="button" class="btn btn-primary rounded-circle btn-white" id="nextAnimation"><i
+                      class="fas fa-caret-up"></i></button>
+                  <button type="button" class="btn btn-primary rounded-circle btn-white" id="previousAnimationn"><i
+                      class="fas fa-caret-down"></i> </button> -->
+                </div>
+              </div>
+              <!-- <button type="button" onclick="lockBtn()" class="ar-visible d-none btn btn-primary rounded-circle btn-lock-unlock btn-white center-icons-lock">
+               Fix </button> -->
+      
+      
+              <!-- <button  type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-lock-unlock btn-white center-icons-lock" onclick="iniFiveGlb()">Ini 5%</button> -->
+      
+              <div class="bottom-icons ar-visible d-none">
+                <div class="btn btn-primary chat-bot-icon rounded-circle cars-btn btn-white-opcity margin-top-5 size-icons ">
+                  <div class="animate-img">
+                    <span>Sizes</span>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-x ">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </div>
+                <button type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
+                  <i class="fas fa-camera"></i>
+                </button>
+              </div>
+      
+              <div class="up-down btn-img-bg">
+                <button type="button" class="btn btn-primary rounded-circle btn-white" id="nextAnimation"><i
+                  class="fas fa-caret-up"></i></button>
+              <button type="button" class="btn btn-primary rounded-circle btn-white" id="previousAnimationn"><i
+                  class="fas fa-caret-down"></i> </button>
+              </div>
+      
+              <!-- Chat bot UI start -->
+              <div class="chat-screen">
+                <div class="chat-mail">
+                  <div class="row">
+                    <div class="col-8 size-section" id="sizeChange">
+                      <div class="model-slide">
+                        <button type="button" onclick="sizeSportL()"
+                          class="btn btn-primary rounded-circle btn-white d-inline-block size-btn active-color">Alpine</button>
+                        <button type="button" onclick="sizeXXL()"
+                          class="btn btn-primary rounded-circle btn-white d-inline-block size-btn" disabled>XL </button>
+                        <button type="button" onclick="sizeM()"
+                          class="btn btn-primary rounded-circle btn-white d-inline-block size-btn" disabled>M
+                        </button>
+                      </div>
+                      <div class="model-slide">
+                        <button type="button" onclick="sizeXL()"
+                          class="btn btn-primary rounded-circle btn-white d-inline-block size-btn" disabled>Sport</button>
+                        <button type="button" onclick="sizeSportsXXL()"
+                          class="btn btn-primary rounded-circle btn-white d-inline-block size-btn" disabled>XXL </button>
+                        <button type="button" onclick="sizeSportL()"
+                          class="btn btn-primary rounded-circle btn-white d-inline-block size-btn" disabled>L </button>
+                      </div>
+                    </div>
+                    <div class="col-4 color-section" id="colorChangeVariant">
+                      <div class="model-slide">
+                        <button type="button" value="./img/Color/Black.png" class="btn btn-primary rounded-circle btn-white d-inline-block color-btn color-black"></button>
+                        <button type="button" value="./img/Color/Grey.png" class="btn btn-primary rounded-circle btn-white d-inline-block color-btn color-gray"> </button>
+                        <button type="button" value="./img/Color/White.png" class="btn btn-primary rounded-circle btn-white d-inline-block color-btn color-white"> </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </model-viewer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-    model-viewer #ar-button {
-        transform: rotate(0deg);
+
+
+ 
+
+
+  
+
+  <!-- common Js -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+  <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+  <!-- main Js -->
+  <script src="js/main.js"></script>
+
+
+  <script type="module">
+  
+
+    // document.getElementById('videoPlay').play();
+
+    // Color Change texture
+    const modelViewerTexture = document.querySelector("model-viewer#imgSize");
+    modelViewerTexture.addEventListener("load", (ev) => {
+      let material = modelViewerTexture.model.materials[0];
+      let applyPBRTexture = (channel, event) => {
+        material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
       }
+      document.querySelector('#colorChangeVariant').addEventListener('click', (event) => {
+        applyPBRTexture('baseColorTexture', event);
+      });
+    })
 
-     model-viewer .slot {
-        transform: rotate(0deg);
-      }
-  }
+    // // Default Change Yaw orientation Change 
+    const modelViewerTransform = document.querySelector("model-viewer#imgSize");
+    const roll = document.querySelector('#roll');
+    const pitch = document.querySelector('#pitch');
+    const yaw = document.querySelector('#yaw');
+    const frame = document.querySelector('#frame');
 
+    frame.addEventListener('click', function () {
+      modelViewerTransform.updateFraming();
+    });
 
-  @media only screen and (max-width: 768px) {
-    .container{
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-    }
-    .right-rounded-btn .btn.btn-lock-unlock {
-        height: 50px;
-        width: 50px;
-    }
-    .right-rounded-btn .btn i {
-        font-size: 20px;
-        color: #3577ad;
-    }
-    .right-rounded-btn .btn {
-        display: inherit;
-        margin: 20px 0;
-        height: 45px;
-        width: 45px;
+    const updateOrientation = () => {
+      modelViewerTransform.orientation = `${roll.value = "0"}deg ${pitch.value = "0"}deg ${yaw.value = "90"}deg `;
+    };
+
+    roll.addEventListener('input', () => {
+      updateOrientation();
+    });
+    pitch.addEventListener('input', () => {
+      updateOrientation();
+    });
+    yaw.addEventListener('input', () => {
+      updateOrientation();
+    });
+
+    $("#ar-button").click(function (e) {
+      updateOrientation();
+    });
+    
+
+    const modelViewerClose= document.querySelector("model-viewer#imgSize");
+    if (modelViewerClose === false){
+        window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
+        location.reload(true);
     }
 
   
+    // Quick Look modes change animation
+    // const modelViewerImage = document.querySelector("model-viewer#imgSize");
+    // modelViewerImage.addEventListener("load", (ev) => {
+    //   modelViewerImage.getElementById("imgSize").style.height = "42px"
+    //   modelViewerImage.getElementById("imgSize").removeAttribute("src");
+    //   modelViewerImage.getElementById("hide-btn-main").style.display = "none";
 
-  
-    /* .animate-img{
-        position: absolute;
-        left: 0;
-        line-height: 27px;
-        margin-left: 7px;
-        font-size: 12px;
-    }
-    .animate-img .img-responsive{
-        width: 60%;
-    }
-    .animate-img span{
-        font-size: 8px;
-        margin-top: -5px;
-        display: inherit;
-    } */
-  }
-  
+    // })
+  </script>
 
-  .toggle-control-main .form-switch .form-check-input{
-    width: 3em;
-    height: 1.5em;
-    cursor: pointer;
-  }
+  <script>
 
-  @media only screen and (max-width: 600px) {
-        /* .chat-screen.show-chat {
-            right: 70px;
-        } */
-        /* .chat-screen {
-            width: 310px;
-    } */
-  }
+    $(document).ready(function () {
+      
+  // AR close button 
+      $('#close-model').click(function () {
+        $('#imgSize').hide("fast");
+        $('.ar-visible').addClass("d-none")
+        document.getElementById("imgSize").removeAttribute("src");
+         window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+        location.reload(true);
+      });
 
-  @media only screen and (max-width: 400px) {
-    .right-rounded-btn .chat-screen.size-ios .btn.btn-white {
-        width: 48px;
-        height: 48px;
-    }
+      //Toggle fullscree
+      $(".chat-bot-icon").click(function (e) {
+        $(this).children('.animate-img').toggleClass('hide');
+        $(this).children('span').toggleClass('hide');
+        $(this).children('svg').toggleClass('animate');
+        $('.chat-screen').toggleClass('show-chat');
+      });
+    });
 
-    .container {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-    }
+    $(document).ready(function () {
 
-    .chat-screen {
-        width: 300px;
-}
-.right-rounded-btn .chat-screen .btn.btn-white {
-    width: 52px;
-    height: 52px;
-}
-}
+      $("#vectorGlb, #motionGlb").click(function (e) {
+        $('.modal').show();
+        console.log("show")
+      });
+     
+      $("#ar-button").click(function (e) {
+        document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1_Pos0.glb");
+        //document.getElementById("imgSize").setAttribute("ios-src", "./img/glb/613500_Thule_Vector_Alpine_hp_V1.usdz");
+        $("#hide-btn-main").css("display", "block");
+        $("#hide-btn-main").css("opacity", "1");
+        $("#imgSize").css("opacity", "1");
+        $(".rounded-circle-btn").css("display", "block");
+        $('.ar-visible').removeClass("d-none")
+        document.getElementById("imgSize").style.height = "42px"
+        $('body').removeClass("modal-open").addClass('overflow-auto');
+        $('.modal').removeClass('show')
+        $('.modal').hide()
+        $('.modal-backdrop').hide()
+        // $('.modal-backdrop').removeClass('show')
+      //  window.location.reload(true)
+   
+        // updateOrientation();
+      });
 
-:focus {outline:none;}
-
-:focus-visible polyfill{ outline: none; }
-
-
-.loader_div{
-    position: absolute;
-    top: 0;
-    bottom: 0%;
-    left: 0;
-    right: 0%;
-    z-index: 99;
-    opacity:0.7;
-    display:none;
-    background: lightgrey url('../img/loader.gif') center center no-repeat;
-  }
-  .js-focus-visible{
-    outline: none;
-  }
-
-
-
-  #lazy-load-poster {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-image: url("../../assets/poster-damagedhelmet.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  #button-load {
-    background-image: url("../../assets/ic_get_app_white_24dp.svg");
-    background-repeat: no-repeat;
-    background-size: 24px 24px;
-    background-position: 6% 50%;
-    background-color: #000;
-    color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    display: inline-block;
-    padding: 10px 18px 9px 40px;
-    font-weight: 500;
-    box-shadow: 0 0 8px rgba(0,0,0,.2), 0 0 4px rgba(0,0,0,.25);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    z-index: 100;
-  }
-
-
-  #imgsize .btn.disabled,  #imgsize .btn:disabled,  #imgsize fieldset:disabled .btn {
-    pointer-events: auto;
-    opacity: 1;
-}
-
-
-model-viewer#imgSize {
-    --poster-color: transparent;
-    /* position: fixed;
-    bottom: 10px; */
-  }
-  .positon-fixed-bottom{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    z-index: 9999;
-    background: #fff;
-    height: 70px;
-    padding: 25px;
-  }
-
-
-  #spinner {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: #000;
-    }
-
-    .map-responsive{
-        overflow:hidden;
-        padding-bottom:56.25%;
-        position:relative;
-        height:0;
-    }
-    .map-responsive video{
-        left:0;
-        top:0;
-        height:100%;
-        width:100%;
-        position:absolute;
-        border: 1px solid #efefef;
-    }
-
-.modelHide{
-    top: 0;
-    bottom: 0;
-    z-index: 999;
-    left: 0;
-    right: 0;
-    position: absolute;
-}
-
-.select-car-model{
-    background: #fff;
-    margin-top: 20px;
-    width: 100%;
-    /* position: relative;
-    bottom: 30px; */
-    /* z-index: 999999; */
-}
-
-::slot.poster {
-    z-index: 999999 !important;
-    background-color: #000 !important;
-}
-#imgSize ::slot  #default-poster {
-    z-index: 9999999 !important;
-}
-
-#imgSize ::slot {
-    z-index: 9999999 !important;
-    background: #fff !important;
-}
-
-::slotted(:first-child) {
-    z-index: 9999999 !important;
-    background: #fff !important;
- }
- slot{
-    background: #fff !important; 
- }
-
-
-
-
- /*PRELOADING------------ */
-#overlayer {
-    width:100%;
-    height:100%;  
-    position:absolute;
-    z-index:1;
-    background:#4a4a4a;
-  }
-  .loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    z-index:3;
-    border: 4px solid #Fff;
-    top: 50%;
-    animation: loader 2s infinite ease;
-  }
-  
-  .loader-inner {
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-    background-color: #fff;
-    animation: loader-inner 2s infinite ease-in;
-  }
-  
-  @keyframes loader {
-    0% {
-      transform: rotate(0deg);
-    }
-    
-    25% {
-      transform: rotate(180deg);
-    }
-    
-    50% {
-      transform: rotate(180deg);
-    }
-    
-    75% {
-      transform: rotate(360deg);
-    }
-    
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes loader-inner {
-    0% {
-      height: 0%;
-    }
-    
-    25% {
-      height: 0%;
-    }
-    
-    50% {
-      height: 100%;
-    }
-    
-    75% {
-      height: 100%;
-    }
-    
-    100% {
-      height: 0%;
-    }
-  }
-
-  @media (max-height: 736px) {
-      .select-car{
-        margin-top: 40px !important;
-        margin-bottom: 0px;
-      }
-      .container-margin{
-        margin-top: 30px;
-      }
-      .select-car h1 {
-        margin-bottom: 35px !important;
-    }
-    .equel-grid .grid {
-        margin-bottom: 30px;
-    }
-  }
-
-  @media (max-height: 600px) {
-        .w-80 {
-            width: 55px !important;
+         const modelView = document.querySelector("model-viewer#imgSize");
+        if (window.location.pathname == "./vector.html") {
+          $("#hide-btn-main").css("display", "block");
+          $("#imgSize").css("opactiy", "0");
+          document.getElementById("imgSize").removeAttribute("src");
+          window.location.reload(true)
+        } else {
+          $("#hide-btn-main").css("display", "none");
+          $("#imgSize").css("height", "42px");
+         // document.getElementById("imgSize").style.height = "50px".
+          document.getElementById("imgSize").removeAttribute("src");
+          // document.getElementById("hide-btn-main").style.display = "none";
         }
-        .select-car{
-            margin-top: 10px !important;
-            margin-bottom: 20px;
-        }
-        .container-margin{
-            margin-top: 10px;
-        }
-        .select-car h1 {
-            margin-bottom: 15px !important;
-        }
-        .equel-grid .grid {
-            margin-bottom: 10px;
-        }
-  }
+    });
 
-  @supports (-webkit-touch-callout: none) {
-    /* CSS specific to iOS devices */ 
-  }
+    
 
 
-  iframe {
-    display:block;
-    width:100%;
-    height: 100%;
-}
 
-.overflow-auto{
-    overflow: auto;
-    padding-right: 0px;
-    z-index: 9999;
-}
+$(".equel-grid").click(function() {
+    // Select all list items
+    var listItems = $(".equel-grid");
+    // Remove 'active' tag for all list items
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].classList.remove("active-grid");
+    }
+    // Add 'active' tag for currently selected item
+    this.classList.add("active-grid");
+});
+
+$(".color-btn").click(function() {
+    // Select all list items
+    var listItems = $(".color-btn");
+    // Remove 'active' tag for all list items
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].classList.remove("active-color");
+    }
+    // Add 'active' tag for currently selected item
+    this.classList.add("active-color");
+});
+
+$(".size-btn").click(function() {
+    // Select all list items
+    var listItems = $(".size-btn");
+    // Remove 'active' tag for all list items
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].classList.remove("active-color");
+    }
+    // Add 'active' tag for currently selected item
+    this.classList.add("active-color");
+});
+
+
+
+    
+
+  </script>
+
+
+</body>
+</html>
