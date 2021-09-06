@@ -216,7 +216,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 1
+              Proceed 2
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -391,6 +391,13 @@
     $("#ar-button").click(function (e) {
       updateOrientation();
     });
+    
+
+    const modelViewerClose= document.querySelector("model-viewer#imgSize");
+    if (modelViewerClose === false){
+        window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
+        location.reload(true);
+    }
 
   
     // Quick Look modes change animation
@@ -412,8 +419,8 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
-        window.location.assign("https://pkarthip91.github.io/AR_Popup/");
-        location.reload(true);
+       // window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+        //location.reload(true);
       });
 
       //Toggle fullscree
