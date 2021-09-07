@@ -210,14 +210,22 @@ function withoutcarAnimation() {
             $('body').removeClass("modal-open").addClass('overflow-auto');
             $('.modal').removeClass('show')
             $('.modal-backdrop').remove()
-
         }
         if(ios == true){
             $('#exampleModal').modal('hide')
        }
         displayItem();
         // Call animation up and down 
-    
+
+        // When click proceed button show loading
+
+        document.getElementsByClassName("loader-new")[0].style.display = "block";;
+        document.getElementById("overlayer").style.display = "block";
+        // Hide loading setimeout
+        setTimeout(function() { 
+         document.getElementsByClassName("loader-new")[0].style.display = "none";;  
+         document.getElementById("overlayer").style.display = "none";
+         }, 3000);
     });
 
 // AR Status updated the session-started change the animation POS 0
