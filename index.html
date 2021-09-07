@@ -219,7 +219,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 10
+              Proceed 1
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -449,10 +449,10 @@
         $(".rounded-circle-btn").css("display", "block");
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
-        // $('#exampleModal').modal('hide')
-        $('body').removeClass("modal-open").addClass('overflow-auto');
-        $('.modal').removeClass('show')
-        $('.modal-backdrop').removeClass('show')
+        $('#exampleModal').modal('hide')
+        //$('body').removeClass("modal-open").addClass('overflow-auto');
+        //$('.modal').removeClass('show')
+        //$('.modal-backdrop').remove()
       //  window.location.reload(true)
    
         // updateOrientation();
