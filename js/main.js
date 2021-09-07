@@ -207,7 +207,14 @@ function withoutcarAnimation() {
     $("#ar-button").click(function () {
         if(ios == false){
             modelViewerImage.animationName = animationListValues
+            $('body').removeClass("modal-open").addClass('overflow-auto');
+            $('.modal').removeClass('show')
+            $('.modal-backdrop').remove()
+
         }
+        if(ios == true){
+            $('#exampleModal').modal('hide')
+       }
         displayItem();
         // Call animation up and down 
     
