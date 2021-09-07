@@ -219,7 +219,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 1
+              Proceed 11
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -420,7 +420,7 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
-         //window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+         window.location.assign("https://pkarthip91.github.io/AR_Popup/");
         location.reload(true);
       });
 
@@ -439,6 +439,10 @@
       //document.getElementById("ar-button").setAttribute("aria-label", "Close");
 
      
+      $("#vectorGlb").click(function () {
+        $('#exampleModal').modal('show')
+
+      });
       $("#ar-button").click(function (e) {
   
         document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1_Pos0.glb");
