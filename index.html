@@ -219,7 +219,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 6
+              Proceed 7
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -396,16 +396,7 @@
     });
     
 
-    $(window).on("navigate", function (event, data) {
-      var direction = data.state.direction;
-      if (direction == 'back') {
-        window.location.assign("https://developer.apple.com/documentation/arkit/adding_an_apple_pay_button_or_a_custom_action_in_ar_quick_look");
-      }
-      if (direction == 'forward') {
-        window.location.assign("https://www.google.co.in/");
-        // Do something else
-      }
-    });
+
 
  
 
@@ -444,8 +435,8 @@
 
     $(document).ready(function () {
 
-      document.getElementById("ar-button").setAttribute("data-bs-dismiss", "modal");
-      document.getElementById("ar-button").setAttribute("aria-label", "Close");
+     // document.getElementById("ar-button").setAttribute("data-bs-dismiss", "modal");
+      //document.getElementById("ar-button").setAttribute("aria-label", "Close");
 
      
       $("#ar-button").click(function (e) {
@@ -458,6 +449,7 @@
         $(".rounded-circle-btn").css("display", "block");
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
+        $('#exampleModal').modal('hide')
         
         // data-bs-dismiss="modal" aria-label="Close"
         // $('body').removeClass("modal-open").addClass('overflow-auto');
