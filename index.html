@@ -14,7 +14,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
 
   <!-- <link rel="stylesheet" href="demo-styles.css"> -->
   <!-- <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
@@ -22,6 +22,13 @@
 </head>
 
 <body>
+
+  <div id="overlayer"></div>
+  <div class="loader-new">
+    <div class="loading">
+    </div>
+  </div>
+  <!-- <button type="submit" class="sbtn btn btn-secondary btn-c" onclick="spinner()" id="load">Log in</button> -->
 
   <div class="container mt-3">
     <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
@@ -205,7 +212,7 @@
           <model-viewer id="imgSize" 
             data-js-focus-visible 
             camera-controls 
-            src="" 
+            src=""
             ar disable-zoom autoplay
             shadow-intensity="0" 
             slot="progress-bar exit-webxr-ar-button interaction-prompt" 
@@ -219,7 +226,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 3
+              Proceed 5
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -334,7 +341,7 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 
   <!-- Loads <model-viewer> for modern browsers: -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
@@ -350,10 +357,6 @@
 
 
   <script type="module">
-  
-
-    // document.getElementById('videoPlay').play();
-
     // Color Change texture
     const modelViewerTexture = document.querySelector("model-viewer#imgSize");
     modelViewerTexture.addEventListener("load", (ev) => {
@@ -396,11 +399,6 @@
     });
     
 
-
-
- 
-
-  
     // Quick Look modes change animation
     // const modelViewerImage = document.querySelector("model-viewer#imgSize");
     // modelViewerImage.addEventListener("load", (ev) => {
@@ -451,6 +449,8 @@
         $(".rounded-circle-btn").css("display", "block");
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
+
+
         //$('#exampleModal').modal('hide')
         //$('body').removeClass("modal-open").addClass('overflow-auto');
         //$('.modal').removeClass('show')
