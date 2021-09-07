@@ -1182,6 +1182,10 @@ model-viewer#imgSize {
     .equel-grid .grid {
         margin-bottom: 30px;
     }
+    .container .modal {
+        top: 90px !important;
+        height: 88% !important;
+    }
   }
 
   @media (max-height: 600px) {
@@ -1218,4 +1222,10 @@ model-viewer#imgSize {
     overflow: auto;
     padding-right: 0px;
     z-index: 9999;
+}
+
+
+.modal {
+    top: 80px !important;
+    height: 88% !important;
 }
