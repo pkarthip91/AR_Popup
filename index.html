@@ -226,7 +226,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 5
+              Proceed 6
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -418,8 +418,22 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
+
+         // When click proceed button show loading
+         document.getElementsByClassName("loader-new")[0].style.display = "block";;
+        document.getElementById("overlayer").style.display = "block";
+        // Hide loading setimeout
+        setTimeout(function() { 
+         document.getElementsByClassName("loader-new")[0].style.display = "none";;  
+         document.getElementById("overlayer").style.display = "none";
+         }, 3000);
+
          window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+
         location.reload(true);
+        
+
+        
       });
 
       //Toggle fullscree
