@@ -413,7 +413,6 @@ const downloadButton = document.querySelector('button#download');
 
 
 recordButton.addEventListener('click', () => {
-    alert('record');
   if (recordButton.textContent === 'Record') {
     startRecording();
   } else {
