@@ -14,7 +14,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
 
   <!-- <link rel="stylesheet" href="demo-styles.css"> -->
   <!-- <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
@@ -22,6 +22,13 @@
 </head>
 
 <body>
+
+  <div id="overlayer"></div>
+  <div class="loader-new">
+    <div class="loading">
+    </div>
+  </div>
+  <!-- <button type="submit" class="sbtn btn btn-secondary btn-c" onclick="spinner()" id="load">Log in</button> -->
 
   <div class="container mt-3">
     <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
@@ -205,7 +212,7 @@
           <model-viewer id="imgSize" 
             data-js-focus-visible 
             camera-controls 
-            src="" 
+            src=""
             ar disable-zoom autoplay
             shadow-intensity="0" 
             slot="progress-bar exit-webxr-ar-button interaction-prompt" 
@@ -268,8 +275,14 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </div>
-                <button type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
+                <button id="record" type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
                   <i class="fas fa-camera"></i>
+                </button>
+                <button id="play" type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
+                  Play
+                </button>
+                <button id="download" type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
+                  Download
                 </button>
               </div>
       
@@ -334,7 +347,7 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 
   <!-- Loads <model-viewer> for modern browsers: -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
@@ -350,10 +363,6 @@
 
 
   <script type="module">
-  
-
-    // document.getElementById('videoPlay').play();
-
     // Color Change texture
     const modelViewerTexture = document.querySelector("model-viewer#imgSize");
     modelViewerTexture.addEventListener("load", (ev) => {
@@ -396,11 +405,6 @@
     });
     
 
-
-
- 
-
-  
     // Quick Look modes change animation
     // const modelViewerImage = document.querySelector("model-viewer#imgSize");
     // modelViewerImage.addEventListener("load", (ev) => {
@@ -420,7 +424,15 @@
         $('#imgSize').hide("fast");
         $('.ar-visible').addClass("d-none")
         document.getElementById("imgSize").removeAttribute("src");
-         window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+         // When click proceed button show loading
+         document.getElementsByClassName("loader-new")[0].style.display = "block";;
+        document.getElementById("overlayer").style.display = "block";
+        // Hide loading setimeout
+        setTimeout(function() { 
+         document.getElementsByClassName("loader-new")[0].style.display = "none";;  
+         document.getElementById("overlayer").style.display = "none";
+         }, 4000);
+        window.location.assign("https://pkarthip91.github.io/AR_Popup/");
         location.reload(true);
       });
 
@@ -451,10 +463,12 @@
         $(".rounded-circle-btn").css("display", "block");
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
+
+
         //$('#exampleModal').modal('hide')
-        $('body').removeClass("modal-open").addClass('overflow-auto');
-        $('.modal').removeClass('show')
-        $('.modal-backdrop').remove()
+        //$('body').removeClass("modal-open").addClass('overflow-auto');
+        //$('.modal').removeClass('show')
+        //$('.modal-backdrop').remove()
       //  window.location.reload(true)
    
         // updateOrientation();
@@ -511,10 +525,6 @@ $(".size-btn").click(function() {
     // Add 'active' tag for currently selected item
     this.classList.add("active-color");
 });
-
-
-
-    
 
   </script>
 
