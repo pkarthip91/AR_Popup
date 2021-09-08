@@ -425,7 +425,6 @@ recordButton.addEventListener('click', () => {
 
 
 playButton.addEventListener('click', () => {
-    alert('play');
   const superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
   recordedVideo.src = null;
   recordedVideo.srcObject = null;
@@ -458,7 +457,6 @@ function handleDataAvailable(event) {
 }
 
 function startRecording() {
-    alert('startRecording');
   recordedBlobs = [];
   let options = {mimeType: 'video/webm;codecs=vp9,opus'};
   try {
