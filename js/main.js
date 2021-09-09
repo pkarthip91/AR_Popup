@@ -416,5 +416,6 @@ if(window.chrome){
     document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");
 }
 else{
+    alert(browser)
     document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");
 }
