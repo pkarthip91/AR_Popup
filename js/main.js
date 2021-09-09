@@ -407,8 +407,7 @@ if (FIREFOX) {
     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
 
 }
-
-// alert(FIREFOX)
+alert(FIREFOX)
 
 
 // Opera 8.0+
@@ -417,9 +416,9 @@ var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.user
 // Firefox 1.0+
 var isFirefox = typeof InstallTrigger !== 'undefined';
 
-if(isFirefox == true){
+if(isFirefox){
     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-    alert(isFirefox)
+
 }
 
 // Safari 3.0+ "[object HTMLElementConstructor]" 
@@ -436,7 +435,7 @@ if(isEdge){
   
 }
 
-alert(isEdge)
+alert(isFirefox)
 
 //
 
