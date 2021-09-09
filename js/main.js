@@ -405,8 +405,10 @@ var FIREFOX = /Firefox/i.test(navigator.userAgent);
 
 if (FIREFOX) {
     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-    alert(FIREFOX)
+
 }
+
+alert(FIREFOX)
 
 
 // Opera 8.0+
