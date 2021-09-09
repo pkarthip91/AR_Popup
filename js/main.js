@@ -399,55 +399,6 @@ $('#show-toggle').click(function () {
     // slideToggle("fast");
 });
 
-
-//Javascript
-var FIREFOX = /Firefox/i.test(navigator.userAgent);
-
-if (FIREFOX) {
-    document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-
-}
-alert(FIREFOX)
-
-
-// Opera 8.0+
-var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-
-// Firefox 1.0+
-var isFirefox = typeof InstallTrigger !== 'undefined';
-
-if(isFirefox){
-    document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-
-}
-
-// Safari 3.0+ "[object HTMLElementConstructor]" 
-var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-
-// Internet Explorer 6-11
-var isIE = /*@cc_on!@*/false || !!document.documentMode;
-
-// Edge 20+
-var isEdge = !isIE && !!window.StyleMedia;
-
-if(isEdge){
-    document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-  
-}
-
-alert(isFirefox)
-
-//
-
-// let firefoxAgent = 
-// userAgentString.indexOf("Firefox") > -1;
-// if (firefoxAgent == true){
-//     alert('firefox')
-//     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-// }
-
-
-
 var browser = (function (agent) {
     switch (true) {
         case agent.indexOf("edge") > -1: return "MS Edge (EdgeHtml)";
@@ -460,4 +411,10 @@ var browser = (function (agent) {
         default: return "other";
     }
 })(window.navigator.userAgent.toLowerCase());
-document.body.innerHTML =  "This is " + browser + " browser." + "<br><br>" + window.navigator.userAgent.toLowerCase();
+
+if(window.chrome){
+    document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");
+}
+else{
+    document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");
+}
