@@ -403,5 +403,6 @@ $('#show-toggle').click(function () {
 let firefoxAgent = 
 userAgentString.indexOf("Firefox") > -1;
 if (firefoxAgent == true){
+    alert('firefox')
     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
 }
