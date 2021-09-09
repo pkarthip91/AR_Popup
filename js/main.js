@@ -431,14 +431,10 @@ var isEdge = !isIE && !!window.StyleMedia;
 
 if(isEdge){
     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
-    alert(isEdge)
+  
 }
 
-// Chrome 1 - 71
-var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-
-// Blink engine detection
-var isBlink = (isChrome || isOpera) && !!window.CSS;
+alert(isEdge)
 
 //
 
