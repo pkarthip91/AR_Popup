@@ -399,42 +399,28 @@ $('#show-toggle').click(function () {
     // slideToggle("fast");
 });
 
-navigator.saysWho = (() => {
-    const { userAgent } = navigator
-    let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []
-    let temp
-  
-    if (/trident/i.test(match[1])) {
-      temp = /\brv[ :]+(\d+)/g.exec(userAgent) || []
-  
-      return `IE ${temp[1] || ''}`
-    }
-  
-    if (match[1] === 'Chrome') {
-      temp = userAgent.match(/\b(OPR|Edge)\/(\d+)/)
-  
-      if (temp !== null) {
-        return temp.slice(1).join(' ').replace('OPR', 'Opera')
-      }
-  
-      temp = userAgent.match(/\b(Edg)\/(\d+)/)
-  
-      if (temp !== null) {
-        return temp.slice(1).join(' ').replace('Edg', 'Edge (Chromium)')
-      }
-    }
-  
-    match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ]
-    temp = userAgent.match(/version\/(\d+)/i)
-  
-    if (temp !== null) {
-      match.splice(1, 1, temp[1])
-    }
-  
-    return match.join(' ')
-  })()
-  
-  alert(navigator.saysWho)
+// Opera 8.0+
+var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+// Firefox 1.0+
+var isFirefox = typeof InstallTrigger !== 'undefined';
+
+// Safari 3.0+ "[object HTMLElementConstructor]" 
+var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+// Internet Explorer 6-11
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+// Edge 20+
+var isEdge = !isIE && !!window.StyleMedia;
+
+// Chrome 1 - 71
+var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+
+// Blink engine detection
+var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+alert(isFirefox)
 
 // let firefoxAgent = 
 // userAgentString.indexOf("Firefox") > -1;
