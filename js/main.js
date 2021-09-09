@@ -408,7 +408,7 @@ if (FIREFOX) {
 
 }
 
-alert(FIREFOX)
+// alert(FIREFOX)
 
 
 // Opera 8.0+
