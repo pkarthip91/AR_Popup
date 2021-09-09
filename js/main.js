@@ -399,6 +399,16 @@ $('#show-toggle').click(function () {
     // slideToggle("fast");
 });
 
+
+//Javascript
+var FIREFOX = /Firefox/i.test(navigator.userAgent);
+
+if (FIREFOX) {
+    document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
+    alert(FIREFOX)
+}
+
+
 // Opera 8.0+
 var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
