@@ -399,10 +399,49 @@ $('#show-toggle').click(function () {
     // slideToggle("fast");
 });
 
+function getOS() {
+  var userAgent = window.navigator.userAgent,
+      platform = window.navigator.platform,
+      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+      firefoxAgent = ['Firefox'],
+      iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+      os = null;
 
-let firefoxAgent = 
-userAgentString.indexOf("Firefox") > -1;
-if (firefoxAgent == true){
-    alert('firefox')
-    document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
+  if (macosPlatforms.indexOf(platform) !== -1) {
+    os = 'Mac OS';
+  } else if (iosPlatforms.indexOf(platform) !== -1) {
+    os = 'iOS';
+  } else if (windowsPlatforms.indexOf(platform) !== -1) {
+    os = 'Windows';
+  }
+  else if (firefoxAgent.indexOf(platform) !== -1) {
+    os = 'Firefox';
+    
+  } else if (/Android/.test(userAgent)) {
+      $("#ar-button").click(function (e) {
+        document.getElementById("imgSize").setAttribute("src", "./img/Thule Motion XT XL 629800-Low-Plustwo.glb");
+        $("#hide-btn-main").css("display", "block") ;
+        $("#hide-btn-main").css("opacity", "1") ;
+        $("#imgSize").css("opacity", "1") ;
+        $(".rounded-circle-btn").css("display", "block") ;
+        $('.ar-visible').removeClass("d-none")
+        document.getElementById("imgSize").style.height = "50px"
+      });
+    // document.getElementById("imgSize").setAttribute("src", "./img/Thule Motion XT XL 629800-Low-Plustwo.glb");
+    os = 'Android';
+    
+  } else if (!os && /Linux/.test(platform)) {
+    os = 'Linux';
+  }
+  return os;
 }
+alert(getOS());
+
+
+// let firefoxAgent = 
+// userAgentString.indexOf("Firefox") > -1;
+// if (firefoxAgent == true){
+//     alert('firefox')
+//     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
+// }
