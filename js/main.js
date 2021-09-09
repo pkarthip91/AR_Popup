@@ -412,8 +412,9 @@ var browser = (function (agent) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-if(window.chrome){
-    document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");
+if("chrome"){
+    document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");  
+    alert(browser)
 }
 else{
     alert(browser)
