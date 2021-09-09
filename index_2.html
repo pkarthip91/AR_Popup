@@ -226,7 +226,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 7
+              Proceed 8
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -545,10 +545,9 @@ if("chrome"){
     document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");  
     alert(browser)
 }
-if("firefox"){
+else{
     alert(browser)
     document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");
-    document.getElementById("imgSize").removeAttribute("ar-modes", "scene-viewer");
 }
 
   </script>
