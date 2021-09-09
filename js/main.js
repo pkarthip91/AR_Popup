@@ -424,7 +424,7 @@ var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.r
 // Blink engine detection
 var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-// alert(isFirefox, "Yes")
+alert(isFirefox, "Yes")
 
 // let firefoxAgent = 
 // userAgentString.indexOf("Firefox") > -1;
