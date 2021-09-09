@@ -407,6 +407,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 
 if(isFirefox == true){
     document.getElementById("imgSize")[0].setAttribute("ar-modes", "webxr scene-viewer quick-look");
+    alert(isFirefox)
 }
 
 // Safari 3.0+ "[object HTMLElementConstructor]" 
@@ -424,7 +425,7 @@ var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.r
 // Blink engine detection
 var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-alert(isFirefox, "Yes")
+//
 
 // let firefoxAgent = 
 // userAgentString.indexOf("Firefox") > -1;
