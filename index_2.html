@@ -21,7 +21,7 @@
   <script src="./_model-viewer_ Interactive Example_files/focus-visible.js.download" defer=""></script> -->
 </head>
 
-<body>
+<body id="capture-full">
 
   <div id="overlayer"></div>
   <div class="loader-new">
@@ -202,6 +202,8 @@
   capture
 </button>
 
+<video width="700" height="400"></video>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -237,7 +239,7 @@
             
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 9
+              Proceed 10
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -430,41 +432,7 @@
 
     $(document).ready(function () {
 
-      const start = async() => {
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video : {
-                    mediaSource : "screen",
-                },
-            });
-
-            const data = [];
-
-            const mediaRecorder = new MediaRecorder(stream);
-
-            mediaRecorder.ondataavailable=(e)=>{
-                data.push(e.data);
-            }
-            mediaRecorder.start();
-            mediaRecorder.onstop=(e)=> {
-                document.querySelector("video").src = URL.createObjectURL(
-                    new Blob(data, {
-                        type: data[0].type,
-
-                    })
-                )
-            }
-
-        };
-
-
-        document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('.specific'), {
-            onrendered: function(canvas) {
-                // document.body.appendChild(canvas);
-              return Canvas2Image.saveAsPNG(canvas);
-            }
-        });
-    });
+      
         
 
       
@@ -605,6 +573,43 @@ if("edg" || "edge" || "opr"){
 //   notSupportBrowser.innerHTML = "Sorry not support this browser go back";  
 // }
 
+
+const start = async() => {
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video : {
+                    mediaSource : "screen",
+                },
+            });
+
+            const data = [];
+
+            const mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable=(e)=>{
+                data.push(e.data);
+            }
+            mediaRecorder.start();
+
+            mediaRecorder.onstop=(e)=> {
+                document.querySelector("video").src = URL.createObjectURL(
+                    new Blob(data, {
+                        type: data[0].type,
+
+                    })
+                )
+            }
+
+        };
+
+
+        document.querySelector('#capture').addEventListener('click', function() {
+        html2canvas(document.querySelector('.capture-full'), {
+            onrendered: function(canvas) {
+                // document.body.appendChild(canvas);
+              return Canvas2Image.saveAsPNG(canvas);
+            }
+        });
+    });
 
 
 let camera_button = document.querySelector("#start-camera");
