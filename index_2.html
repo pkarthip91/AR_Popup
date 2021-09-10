@@ -208,6 +208,7 @@
       <iframe src="vector.html"></iframe>
       </div>
       <div class="modal-footer">
+        <button type="button" id="btn-close-back" class="btn-close-back2" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="select-car-model">
           <model-viewer id="imgSize" 
             data-js-focus-visible 
@@ -225,10 +226,10 @@
               Proceed 1
             </button> -->
 
-            <button type="button" class="btn-close-back" data-bs-dismiss="modal" aria-label="Close"></button>
+            
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 6
+              Proceed 7
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -555,7 +556,7 @@ if("edg" || "edge" || "opr"){
 
 if("firefox"){
   alert(browser)
-  const notSupportBrowser = document.getElementsByClassName("btn-close-back");
+  const notSupportBrowser = document.getElementById("btn-close-back");
   notSupportBrowser.innerHTML = "Sorry not support this browser go back";  
 }
 
