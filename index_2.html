@@ -195,14 +195,11 @@
 
 <!-- Button trigger modal -->
 
-<button onclick="start();" type="button" class="btn btn-primary rounded-circle btn-white-opcity">
-  <!-- <i class="fas fa-camera"></i> --> Record
-</button>
-<button id="capture" type="button" class="btn btn-primary rounded-circle btn-white-opcity">
-  capture
-</button>
-
-<video width="700" height="400"></video>
+<div class="specific">
+  <button onclick="start();">Click To Screen Record</button>
+  <button id="capture">Take a Screenshot!</button>
+  <video width="700" height="400"></video>
+</div>
 
 
 <!-- Modal -->
@@ -239,7 +236,7 @@
             
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 10
+              Proceed 1
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -603,7 +600,7 @@ const start = async() => {
 
 
         document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('.capture-full'), {
+        html2canvas(document.querySelector('.specific'), {
             onrendered: function(canvas) {
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
