@@ -221,12 +221,14 @@
             ar-scale="fixed" 
             alt="Select Car">
            
-            <button  id="ar-button">
+            <!-- <button  id="ar-button">
               Proceed 1
-            </button>
+            </button> -->
+
+            <button type="button" class="btn-close-back" data-bs-dismiss="modal" aria-label="Close"></button>
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 4
+              Proceed 5
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -528,28 +530,33 @@ $(".size-btn").click(function() {
 
 
 
-// var browser = (function (agent) {
-//     switch (true) {
-//         case agent.indexOf("edge") > -1: return "MS Edge (EdgeHtml)";
-//         case agent.indexOf("edg") > -1: return "MS Edge Chromium";
-//         case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
-//         case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
-//         case agent.indexOf("trident") > -1: return "Internet Explorer";
-//         case agent.indexOf("firefox") > -1: return "firefox";
-//         case agent.indexOf("safari") > -1: return "safari";
-//         default: return "other";
-//     }
-// })(window.navigator.userAgent.toLowerCase());
+var browser = (function (agent) {
+    switch (true) {
+        case agent.indexOf("edge") > -1: return "MS Edge (EdgeHtml)";
+        case agent.indexOf("edg") > -1: return "MS Edge Chromium";
+        case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+        case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+        case agent.indexOf("trident") > -1: return "Internet Explorer";
+        case agent.indexOf("firefox") > -1: return "firefox";
+        case agent.indexOf("safari") > -1: return "safari";
+        default: return "other";
+    }
+})(window.navigator.userAgent.toLowerCase());
 
-// if("chrome"){
-//     document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");  
-//     // alert(browser)
-// }
+if("chrome"){
+    document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");  
+    // alert(browser)
+}
  
-// if("firefox" || "edg" || "edge" || "opr"){
-//     document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");  
-//     // alert(browser)
-// }
+if("firefox" || "edg" || "edge" || "opr"){
+    document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");  
+    // alert(browser)
+}
+
+if("firefox"){
+  const notSupportBrowser = document.getElementsByClassName("btn-close-back");
+  notSupportBrowser.innerHTML = "Sorry not support this browser";  
+}
 
 
   </script>
