@@ -231,7 +231,7 @@
             
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 3
+              Proceed 4
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -282,11 +282,9 @@
                 </div>
 
                 
-<div class="specific">
-  <button type="button" onclick="start();" >Click To Screen Record</button>
-  <button id="capture">Take a Screenshot!</button>
-  <video width="700" height="400"></video>
-</div>
+                <video id="player" controls autoplay></video>
+                <button id="capture">Capture</button>
+                <canvas id="canvas" width=320 height=240></canvas>
                
                 <button id="download" type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
                   Download
@@ -575,45 +573,24 @@ if("edg" || "edge" || "opr"){
 // }
 
 
+const player = document.getElementById('player');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const captureButton = document.getElementById('capture');
 
+  const constraints = {
+    video: true,
+  };
 
-const start = async() => {
-  alert('l');
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video : {
-                    mediaSource : "screen",
-                },
-            });
+  captureButton.addEventListener('click', () => {
+    // Draw the video frame to the canvas.
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+  });
 
-            const data = [];
-
-            const mediaRecorder = new MediaRecorder(stream);
-
-            mediaRecorder.ondataavailable=(e)=>{
-                data.push(e.data);
-            }
-            mediaRecorder.start();
-
-            mediaRecorder.onstop=(e)=> {
-                document.querySelector("video").src = URL.createObjectURL(
-                 
-                    new Blob(data, {
-                        type: data[0].type,
-
-                    })
-                )
-            }
-
-        };
-
-
-        document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('.specific'), {
-            onrendered: function(canvas) {
-                // document.body.appendChild(canvas);
-              return Canvas2Image.saveAsPNG(canvas);
-            }
-        });
+  // Attach the video stream to the video element and autoplay.
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      player.srcObject = stream;
     });
 
 
