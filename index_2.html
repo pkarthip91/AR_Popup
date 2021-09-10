@@ -195,6 +195,13 @@
 
 <!-- Button trigger modal -->
 
+<button onclick="start();" type="button" class="btn btn-primary rounded-circle btn-white-opcity">
+  <!-- <i class="fas fa-camera"></i> --> Record
+</button>
+<button id="capture" type="button" class="btn btn-primary rounded-circle btn-white-opcity">
+  capture
+</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -208,12 +215,7 @@
       <iframe src="vector.html"></iframe>
       </div>
       <div class="modal-footer">
-        <button onclick="start();" type="button" class="btn btn-primary rounded-circle btn-white-opcity">
-          <!-- <i class="fas fa-camera"></i> --> Record
-        </button>
-        <button id="capture" type="button" class="btn btn-primary rounded-circle btn-white-opcity">
-          capture
-        </button>
+        
         <!-- <button type="button" id="btn-close-back" class="btn-close-back2" data-bs-dismiss="modal" aria-label="Close"></button> -->
         <div class="select-car-model">
           <model-viewer id="imgSize" 
