@@ -217,7 +217,7 @@
             shadow-intensity="0" 
             slot="progress-bar exit-webxr-ar-button interaction-prompt" 
             ar-placement="floor"
-          
+           ar-modes ="webxr scene-viewer quick-look"
             ar-scale="fixed" 
             alt="Select Car">
            
@@ -226,7 +226,7 @@
             </button> -->
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 1
+              Proceed 2
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -543,12 +543,12 @@ var browser = (function (agent) {
 
 if("chrome"){
     document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");  
-    alert(browser)
+    // alert(browser)
 }
  
 if("firefox" || "edg" || "edge" || "opr"){
     document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");  
-    alert(browser)
+    // alert(browser)
 }
 
 
