@@ -195,9 +195,7 @@
 
 <!-- Button trigger modal -->
 
-<video id="player" controls autoplay></video>
-<button id="capture">Capture</button>
-<canvas id="canvas" width=320 height=240></canvas>
+<button id="record">Record</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -232,8 +230,8 @@
 
             
       
-            <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 6
+            <button slot="ar-button" class="hide-apped start" id="ar-button">
+              Proceed 7
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -283,7 +281,7 @@
                   </svg>
                 </div>
 
-                <button id="start">Start camera</button>
+                <!-- <button id="start">Start camera</button> -->
                 <button id="record">Record</button>
                 <button id="play">Play</button>
                 <button id="download">Download</button>
@@ -678,7 +676,7 @@ async function init(constraints) {
   }
 }
 
-document.querySelector('button#start').addEventListener('click', async () => {
+document.querySelector('button.start').addEventListener('click', async () => {
   const hasEchoCancellation = document.querySelector('#echoCancellation').checked;
   const constraints = {
     audio: {
@@ -691,6 +689,14 @@ document.querySelector('button#start').addEventListener('click', async () => {
   console.log('Using media constraints:', constraints);
   await init(constraints);
 });
+
+
+// const recordButton = document.querySelector('button#record');
+
+// recordButton.onclick = function() {
+//     mediaRecorder.start();
+//     console.log("recorder started");
+//   }
 
 
   </script>
