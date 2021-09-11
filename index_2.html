@@ -231,7 +231,7 @@
             
       
             <button slot="ar-button" class="hide-apped start-camera" id="ar-button">
-              Proceed 9
+              Proceed 1
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -587,12 +587,12 @@ let blobs_recorded = [];
 
 camera_button.addEventListener('click', async function() {
    	camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-	video.srcObject = camera_stream;
+	  video.srcObject = camera_stream;
 });
 
 start_button.addEventListener('click', function() {
     // set MIME type of recording as video/webm
-    media_recorder = new MediaRecorder(camera_stream, { mimeType: 'video/webm' });
+    media_recorder = new MediaRecorder(camera_stream, { mimeType: 'video/mp4' });
 
     // event : new recorded video blob available 
     media_recorder.addEventListener('dataavailable', function(e) {
@@ -602,7 +602,7 @@ start_button.addEventListener('click', function() {
     // event : recording stopped & all blobs sent
     media_recorder.addEventListener('stop', function() {
     	// create local object URL from the recorded video blobs
-    	let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
+    	let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/mp4' }));
     	download_link.href = video_local;
     });
 
