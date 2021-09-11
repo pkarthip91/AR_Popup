@@ -199,6 +199,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <video id="recorded" playsinline loop></video>
   <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
@@ -231,7 +232,7 @@
             
       
             <button slot="ar-button" class="hide-apped start" id="ar-button">
-              Proceed 7
+              Proceed 8
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -662,7 +663,7 @@ function handleSuccess(stream) {
   console.log('getUserMedia() got stream:', stream);
   window.stream = stream;
 
-  const gumVideo = document.querySelector('video#gum');
+  const gumVideo = document.querySelector('model-viewer#imgSize');
   gumVideo.srcObject = stream;
 }
 
