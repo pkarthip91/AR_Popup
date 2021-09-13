@@ -584,7 +584,7 @@ console.log(cameraControl);
             }
         };
         document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.getAttribute('camera-controls'), {
+        html2canvas(document.getElementById('model-viewer'), {
             onrendered: function(canvas) {
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
