@@ -227,7 +227,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 7
+              Proceed 8
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -366,6 +366,8 @@
 
 
   <script type="module">
+
+
     // Color Change texture
     const modelViewerTexture = document.querySelector("model-viewer#imgSize");
     modelViewerTexture.addEventListener("load", (ev) => {
@@ -448,6 +450,7 @@
     });
 
     $(document).ready(function () {
+      
 
      // document.getElementById("ar-button").setAttribute("data-bs-dismiss", "modal");
       //document.getElementById("ar-button").setAttribute("aria-label", "Close");
@@ -559,9 +562,10 @@ if("edg" || "edge" || "opr"){
 // }
 
 
-const cameraControl = document.getElementById("imgSize").getAttribute("camera-controls");
-console.log(cameraControl);
+
     
+
+
     const start = async() => {
             const stream = await navigator.mediaDevices.getDisplayMedia({
                 video : {
@@ -584,15 +588,15 @@ console.log(cameraControl);
             }
         };
         document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.getElementById('model-viewer'), {
+        html2canvas(document.getAttributeNode('camera-controls'), {
             onrendered: function(canvas) {
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
             }
         });
-        console.log(html2canvas)
+      
     });
-
+    console.log(getAttributeNode)
   </script>
 
 
