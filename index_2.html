@@ -227,7 +227,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 2
+              Proceed 3
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -358,8 +358,11 @@
   <!-- Loads <model-viewer> for old browsers like IE11: -->
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script src="https://superal.github.io/canvas2image/canvas2image.js"></script> -->
+
+  <script src="js/html2canvas.js"></script>
+  <script src="js/html2canvas.min.js"></script>
 
   <!-- main Js -->
   <script src="js/main.js"></script>
@@ -560,35 +563,39 @@ if("edg" || "edge" || "opr"){
 
 
 
-    const start = async() => {
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video : {
-                    mediaSource : "screen",
-                },
-            });
-            const data = [];
-            const mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.ondataavailable=(e)=>{
-                data.push(e.data);
-            }
-            mediaRecorder.start();
-            mediaRecorder.onstop=(e)=> {
-                document.querySelector("video").src = URL.createObjectURL(
-                    new Blob(data, {
-                        type: data[0].type,
+    // const start = async() => {
+    //         const stream = await navigator.mediaDevices.getDisplayMedia({
+    //             video : {
+    //                 mediaSource : "screen",
+    //             },
+    //         });
+    //         const data = [];
+    //         const mediaRecorder = new MediaRecorder(stream);
+    //         mediaRecorder.ondataavailable=(e)=>{
+    //             data.push(e.data);
+    //         }
+    //         mediaRecorder.start();
+    //         mediaRecorder.onstop=(e)=> {
+    //             document.querySelector("video").src = URL.createObjectURL(
+    //                 new Blob(data, {
+    //                     type: data[0].type,
 
-                    })
-                )
-            }
-        };
-        document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('model-viewer#imgSize'), {
-            onrendered: function(canvas) {
-                // document.body.appendChild(canvas);
-              return Canvas2Image.saveAsPNG(canvas);
-            }
-        });
-    });
+    //                 })
+    //             )
+    //         }
+    //     };
+    //     document.querySelector('#capture').addEventListener('click', function() {
+    //     html2canvas(document.querySelector('model-viewer#imgSize'), {
+    //         onrendered: function(canvas) {
+    //             // document.body.appendChild(canvas);
+    //           return Canvas2Image.saveAsPNG(canvas);
+    //         }
+    //     });
+    // });
+
+    html2canvas(document.querySelector("model-viewer#imgSize")).then(canvas => {
+    document.body.appendChild(canvas)
+});
 
   </script>
 
