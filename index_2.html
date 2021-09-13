@@ -227,7 +227,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 8
+              Proceed 9
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -590,6 +590,7 @@ if("edg" || "edge" || "opr"){
         document.querySelector('#capture').addEventListener('click', function() {
         html2canvas(document.getAttributeNode('camera-controls'), {
             onrendered: function(canvas) {
+              alert("yes");
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
             }
