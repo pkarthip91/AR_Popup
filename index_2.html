@@ -227,7 +227,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 3
+              Proceed 4
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -276,12 +276,14 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </div>
+
+                
                
                 <div class="specific">
-                  <button onclick="start();">Click To Screen Record</button>
+                  <!-- <button onclick="start();">Click To Screen Record</button> -->
                   <button id="capture">Take a Screenshot!</button>
-                  <video width="700" height="400"></video>
-              </div>
+                  <!-- <video width="700" height="400"></video> -->
+                </div>
               </div>
       
               <div class="up-down btn-img-bg">
@@ -593,9 +595,12 @@ if("edg" || "edge" || "opr"){
     //     });
     // });
 
+    document.querySelector('#capture').addEventListener('click', function() {
+
     html2canvas(document.querySelector("model-viewer#imgSize")).then(canvas => {
-    document.body.appendChild(canvas)
-});
+      document.body.appendChild(canvas)
+    });
+  });
 
   </script>
 
