@@ -195,7 +195,7 @@
 
 <!-- Button trigger modal -->
 
-<button id="capture">Take a Screenshot!</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -206,7 +206,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <!-- <iframe src="vector.html"></iframe> -->
+      <iframe src="vector.html"></iframe>
       </div>
       <div class="modal-footer">
         
@@ -228,7 +228,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped start-camera" id="ar-button">
-              Proceed 1
+              Proceed 2
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -278,17 +278,10 @@
                   </svg>
                 </div>
 
-                
-               
-                <div class="specific">
-                  <video id="video" width="320" height="240" autoplay></video>
-                  <button id="click-photo">Click Photo</button>
-                  <canvas id="canvas" width="320" height="240"></canvas>
+                <video id="player" controls autoplay></video>
+                <button id="capture">Capture</button>
+                <canvas id="canvas" width=320 height=240></canvas>
 
-                  <!-- <button onclick="start();">Click To Screen Record</button> -->
-                  <button id="capture">Take a Screenshot!</button>
-                  <!-- <video width="700" height="400"></video> -->
-                </div>
               </div>
       
               <div class="up-down btn-img-bg">
@@ -379,25 +372,27 @@
 
   <script type="module">
 
-document.querySelector('#capture').addEventListener('click', function() {
-    html2canvas(document.querySelector("#capture-body")).then(function(canvas) {
-      document.body.appendChild(canvas)
-    });
+/* globals MediaRecorder */
+
+const player = document.getElementById('player');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const captureButton = document.getElementById('capture');
+
+  const constraints = {
+    video: true,
+  };
+
+  captureButton.addEventListener('click', () => {
+    // Draw the video frame to the canvas.
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
   });
 
-
-let click_button = document.querySelector("#click-photo");
-let canvas = document.querySelector("#canvas");
-
-
-click_button.addEventListener('click', function() {
-   	canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-   	let image_data_url = canvas.toDataURL('image/jpeg');
-   	// data url of the image
-   	console.log(image_data_url);
-});
-
- 
+  // Attach the video stream to the video element and autoplay.
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      player.srcObject = stream;
+    });
 
   </script>
 
