@@ -21,7 +21,7 @@
   <script src="./_model-viewer_ Interactive Example_files/focus-visible.js.download" defer=""></script> -->
 </head>
 
-<body>
+<body id="capture-body">
 
   <div id="overlayer"></div>
   <div class="loader-new">
@@ -195,6 +195,7 @@
 
 <!-- Button trigger modal -->
 
+<button id="capture">Take a Screenshot!</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -205,7 +206,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <iframe src="vector.html"></iframe>
+      <!-- <iframe src="vector.html"></iframe> -->
       </div>
       <div class="modal-footer">
         
@@ -226,8 +227,8 @@
               Proceed 1
             </button> -->
 
-            <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 4
+            <button slot="ar-button" class="hide-apped start-camera" id="ar-button">
+              Proceed 5
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -280,6 +281,10 @@
                 
                
                 <div class="specific">
+                  <video id="video" width="320" height="240" autoplay></video>
+                  <button id="click-photo">Click Photo</button>
+                  <canvas id="canvas" width="320" height="240"></canvas>
+
                   <!-- <button onclick="start();">Click To Screen Record</button> -->
                   <button id="capture">Take a Screenshot!</button>
                   <!-- <video width="700" height="400"></video> -->
@@ -363,244 +368,43 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
   <script src="https://superal.github.io/canvas2image/canvas2image.js"></script> -->
 
-  <script src="js/html2canvas.js"></script>
-  <script src="js/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+  <!-- <script src="js/html2canvas.js"></script> -->
+
 
   <!-- main Js -->
-  <script src="js/main.js"></script>
+  <!-- <script src="js/main.js"></script> -->
 
 
   <script type="module">
-    // Color Change texture
-    const modelViewerTexture = document.querySelector("model-viewer#imgSize");
-    modelViewerTexture.addEventListener("load", (ev) => {
-      let material = modelViewerTexture.model.materials[0];
-      let applyPBRTexture = (channel, event) => {
-        material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
-      }
-      document.querySelector('#colorChangeVariant').addEventListener('click', (event) => {
-        applyPBRTexture('baseColorTexture', event);
-      });
-    })
 
-    // // Default Change Yaw orientation Change 
-    const modelViewerTransform = document.querySelector("model-viewer#imgSize");
-    const roll = document.querySelector('#roll');
-    const pitch = document.querySelector('#pitch');
-    const yaw = document.querySelector('#yaw');
-    const frame = document.querySelector('#frame');
-
-    frame.addEventListener('click', function () {
-      modelViewerTransform.updateFraming();
-    });
-
-    const updateOrientation = () => {
-      modelViewerTransform.orientation = `${roll.value = "0"}deg ${pitch.value = "0"}deg ${yaw.value = "90"}deg `;
-    };
-
-    roll.addEventListener('input', () => {
-      updateOrientation();
-    });
-    pitch.addEventListener('input', () => {
-      updateOrientation();
-    });
-    yaw.addEventListener('input', () => {
-      updateOrientation();
-    });
-
-    $("#ar-button").click(function (e) {
-      updateOrientation();
-    });
-    
-
-    // Quick Look modes change animation
-    // const modelViewerImage = document.querySelector("model-viewer#imgSize");
-    // modelViewerImage.addEventListener("load", (ev) => {
-    //   modelViewerImage.getElementById("imgSize").style.height = "42px"
-    //   modelViewerImage.getElementById("imgSize").removeAttribute("src");
-    //   modelViewerImage.getElementById("hide-btn-main").style.display = "none";
-
-    // })
-  </script>
-
-  <script>
-
-    $(document).ready(function () {
-  // AR close button 
-      $('#close-model').click(function () {
-        $('#imgSize').hide("fast");
-        $('.ar-visible').addClass("d-none")
-        document.getElementById("imgSize").removeAttribute("src");
-         // When click proceed button show loading
-         document.getElementsByClassName("loader-new")[0].style.display = "block";;
-        document.getElementById("overlayer").style.display = "block";
-        // Hide loading setimeout
-        setTimeout(function() { 
-         document.getElementsByClassName("loader-new")[0].style.display = "none";;  
-         document.getElementById("overlayer").style.display = "none";
-         }, 4000);
-        window.location.assign("https://pkarthip91.github.io/AR_Popup/");
-        location.reload(true);
-      });
-
-      //Toggle fullscree
-      $(".chat-bot-icon").click(function (e) {
-        $(this).children('.animate-img').toggleClass('hide');
-        $(this).children('span').toggleClass('hide');
-        $(this).children('svg').toggleClass('animate');
-        $('.chat-screen').toggleClass('show-chat');
-      });
-    });
-
-    $(document).ready(function () {
-
-     // document.getElementById("ar-button").setAttribute("data-bs-dismiss", "modal");
-      //document.getElementById("ar-button").setAttribute("aria-label", "Close");
-
-     
-      $("#vectorGlb").click(function () {
-        $('#exampleModal').modal('show')
-      });
-      $("#ar-button").click(function (e) {
-        document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1_Pos0.glb");
-        //document.getElementById("imgSize").setAttribute("ios-src", "./img/glb/613500_Thule_Vector_Alpine_hp_V1.usdz");
-        $("#hide-btn-main").css("display", "block");
-        $("#hide-btn-main").css("opacity", "1");
-        $("#imgSize").css("opacity", "1");
-        $(".rounded-circle-btn").css("display", "block");
-        $('.ar-visible').removeClass("d-none")
-        document.getElementById("imgSize").style.height = "42px"
-
-
-        //$('#exampleModal').modal('hide')
-        //$('body').removeClass("modal-open").addClass('overflow-auto');
-        //$('.modal').removeClass('show')
-        //$('.modal-backdrop').remove()
-      //  window.location.reload(true)
-   
-        // updateOrientation();
-      });
-
-         const modelView = document.querySelector("model-viewer#imgSize");
-        if (window.location.pathname == "./vector.html") {
-          $("#hide-btn-main").css("display", "block");
-          $("#imgSize").css("opactiy", "0");
-          document.getElementById("imgSize").removeAttribute("src");
-          window.location.reload(true)
-        } else {
-          $("#hide-btn-main").css("display", "none");
-          $("#imgSize").css("height", "42px");
-         // document.getElementById("imgSize").style.height = "50px".
-          document.getElementById("imgSize").removeAttribute("src");
-          // document.getElementById("hide-btn-main").style.display = "none";
-        }
-    });
-
-    
-
-
-
-$(".equel-grid").click(function() {
-    // Select all list items
-    var listItems = $(".equel-grid");
-    // Remove 'active' tag for all list items
-    for (let i = 0; i < listItems.length; i++) {
-        listItems[i].classList.remove("active-grid");
-    }
-    // Add 'active' tag for currently selected item
-    this.classList.add("active-grid");
-});
-
-$(".color-btn").click(function() {
-    // Select all list items
-    var listItems = $(".color-btn");
-    // Remove 'active' tag for all list items
-    for (let i = 0; i < listItems.length; i++) {
-        listItems[i].classList.remove("active-color");
-    }
-    // Add 'active' tag for currently selected item
-    this.classList.add("active-color");
-});
-
-$(".size-btn").click(function() {
-    // Select all list items
-    var listItems = $(".size-btn");
-    // Remove 'active' tag for all list items
-    for (let i = 0; i < listItems.length; i++) {
-        listItems[i].classList.remove("active-color");
-    }
-    // Add 'active' tag for currently selected item
-    this.classList.add("active-color");
-});
-
-
-
-var browser = (function (agent) {
-    switch (true) {
-        case agent.indexOf("edge") > -1: return "MS Edge (EdgeHtml)";
-        case agent.indexOf("edg") > -1: return "MS Edge Chromium";
-        case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
-        case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
-        case agent.indexOf("trident") > -1: return "Internet Explorer";
-        case agent.indexOf("firefox") > -1: return "firefox";
-        case agent.indexOf("safari") > -1: return "safari";
-        default: return "other";
-    }
-})(window.navigator.userAgent.toLowerCase());
-
-if("chrome"){
-    document.getElementById("imgSize").setAttribute("ar-modes", "webxr quick-look");  
-    // alert(browser)
-}
- 
-if("edg" || "edge" || "opr"){
-    document.getElementById("imgSize").setAttribute("ar-modes", "webxr scene-viewer quick-look");  
-    // alert(browser)
-}
-
-// if("firefox"){
-//   const notSupportBrowser = document.getElementById("btn-close-back");
-//   notSupportBrowser.innerHTML = "Sorry not support this browser go back";  
-// }
-
-
-
-    // const start = async() => {
-    //         const stream = await navigator.mediaDevices.getDisplayMedia({
-    //             video : {
-    //                 mediaSource : "screen",
-    //             },
-    //         });
-    //         const data = [];
-    //         const mediaRecorder = new MediaRecorder(stream);
-    //         mediaRecorder.ondataavailable=(e)=>{
-    //             data.push(e.data);
-    //         }
-    //         mediaRecorder.start();
-    //         mediaRecorder.onstop=(e)=> {
-    //             document.querySelector("video").src = URL.createObjectURL(
-    //                 new Blob(data, {
-    //                     type: data[0].type,
-
-    //                 })
-    //             )
-    //         }
-    //     };
-    //     document.querySelector('#capture').addEventListener('click', function() {
-    //     html2canvas(document.querySelector('model-viewer#imgSize'), {
-    //         onrendered: function(canvas) {
-    //             // document.body.appendChild(canvas);
-    //           return Canvas2Image.saveAsPNG(canvas);
-    //         }
-    //     });
-    // });
-
-    document.querySelector('#capture').addEventListener('click', function() {
-
-    html2canvas(document.querySelector("model-viewer#imgSize")).then(canvas => {
+document.querySelector('#capture').addEventListener('click', function() {
+    html2canvas(document.querySelector("#capture-body")).then(function(canvas) {
       document.body.appendChild(canvas)
     });
   });
+
+
+  let camera_button = document.querySelector(".start-camera");
+let video = document.querySelector("#video");
+let click_button = document.querySelector("#click-photo");
+let canvas = document.querySelector("#canvas");
+
+camera_button.addEventListener('click', async function() {
+   	let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+	video.srcObject = stream;
+});
+
+click_button.addEventListener('click', function() {
+   	canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+   	let image_data_url = canvas.toDataURL('image/jpeg');
+
+   	// data url of the image
+   	console.log(image_data_url);
+});
+
+ 
 
   </script>
 
