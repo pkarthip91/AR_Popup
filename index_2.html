@@ -229,7 +229,7 @@
             
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 10
+              Proceed 1
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -279,9 +279,11 @@
                   </svg>
                 </div>
                
-                <button onclick="start();">Click To Screen Record</button>
-                <button id="capture">Take a Screenshot!</button>
-                <video width="700" height="400"></video>
+                <div class="specific">
+                  <button onclick="start();">Click To Screen Record</button>
+                  <button id="capture">Take a Screenshot!</button>
+                  <video width="700" height="400"></video>
+              </div>
               </div>
       
               <div class="up-down btn-img-bg">
@@ -421,45 +423,6 @@
   <script>
 
     $(document).ready(function () {
-
-      const start = async() => {
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video : {
-                    mediaSource : "screen",
-                },
-            });
-
-            const data = [];
-
-            const mediaRecorder = new MediaRecorder(stream);
-
-            mediaRecorder.ondataavailable=(e)=>{
-                data.push(e.data);
-            }
-            mediaRecorder.start();
-            mediaRecorder.onstop=(e)=> {
-                document.querySelector("video").src = URL.createObjectURL(
-                    new Blob(data, {
-                        type: data[0].type,
-
-                    })
-                )
-            }
-
-        };
-
-
-        document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('.specific'), {
-            onrendered: function(canvas) {
-                // document.body.appendChild(canvas);
-              return Canvas2Image.saveAsPNG(canvas);
-            }
-        });
-    });
-        
-
-      
   // AR close button 
       $('#close-model').click(function () {
         $('#imgSize').hide("fast");
@@ -597,6 +560,43 @@ if("edg" || "edge" || "opr"){
 //   notSupportBrowser.innerHTML = "Sorry not support this browser go back";  
 // }
 
+
+
+const start = async() => {
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video : {
+                    mediaSource : "screen",
+                },
+            });
+
+            const data = [];
+
+            const mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable=(e)=>{
+                data.push(e.data);
+            }
+            mediaRecorder.start();
+            mediaRecorder.onstop=(e)=> {
+                document.querySelector("video").src = URL.createObjectURL(
+                    new Blob(data, {
+                        type: data[0].type,
+
+                    })
+                )
+            }
+
+        };
+
+
+        document.querySelector('#capture').addEventListener('click', function() {
+        html2canvas(document.querySelector('.specific'), {
+            onrendered: function(canvas) {
+                // document.body.appendChild(canvas);
+              return Canvas2Image.saveAsPNG(canvas);
+            }
+        });
+    });
 
   </script>
 
