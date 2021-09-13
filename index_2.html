@@ -195,7 +195,9 @@
 
 <!-- Button trigger modal -->
 
-
+<!-- <video id="player" controls></video> -->
+<button id="capture">Capture</button>
+<canvas id="canvas" width=320 height=240></canvas>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -227,8 +229,8 @@
               Proceed 1
             </button> -->
 
-            <button slot="ar-button" class="hide-apped start-camera" id="ar-button">
-              Proceed 2
+            <button slot="ar-button" class="hide-apped" id="ar-button">
+              Proceed 3
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -277,11 +279,6 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </div>
-
-                <video id="player" controls autoplay></video>
-                <button id="capture">Capture</button>
-                <canvas id="canvas" width=320 height=240></canvas>
-
               </div>
       
               <div class="up-down btn-img-bg">
@@ -374,7 +371,7 @@
 
 /* globals MediaRecorder */
 
-const player = document.getElementById('player');
+  const player = document.getElementById('imgSize');
   const canvas = document.getElementById('canvas');
   const context = canvas.getContext('2d');
   const captureButton = document.getElementById('capture');
@@ -392,6 +389,7 @@ const player = document.getElementById('player');
   navigator.mediaDevices.getUserMedia(constraints)
     .then((stream) => {
       player.srcObject = stream;
+
     });
 
   </script>
