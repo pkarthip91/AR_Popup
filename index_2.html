@@ -219,7 +219,6 @@
             shadow-intensity="0" 
             slot="progress-bar exit-webxr-ar-button interaction-prompt" 
             ar-placement="floor"
-           ar-modes ="scene-viewer"
             ar-scale="fixed" 
             alt="Select Car">
            
@@ -230,7 +229,7 @@
             
       
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 9
+              Proceed 10
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -280,9 +279,9 @@
                   </svg>
                 </div>
                
-                <button id="download" type="button" class="ar-visible d-none btn btn-primary rounded-circle btn-white-opcity">
-                  Download
-                </button>
+                <button onclick="start();">Click To Screen Record</button>
+                <button id="capture">Take a Screenshot!</button>
+                <video width="700" height="400"></video>
               </div>
       
               <div class="up-down btn-img-bg">
