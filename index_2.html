@@ -227,7 +227,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 11
+              Proceed 12
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -586,14 +586,15 @@ if("edg" || "edge" || "opr"){
             }
         };
 
-        const cameraControl = document.querySelector("model-viewer#imgSize")
-      const controlArrt = cameraControl.getAttributeNode("camera-controls", "");
+     
     // const cameraControl = document.getElementById("model-viewer#imgSize").getAttribute("camera-controls");
 
 
         document.querySelector('#capture').addEventListener('click', function() {
-        //  alert(controlArrt);
-        html2canvas(controlArrt, {
+          const cameraControl = document.querySelector("model-viewer#imgSize")
+      const controlArrt = cameraControl.getAttributeNode("camera-controls", "");
+      alert(controlArrt);
+        html2canvas(controlArrt == true, {
             onrendered: function(canvas) {
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
