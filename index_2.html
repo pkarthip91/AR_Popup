@@ -195,7 +195,7 @@
 
 <!-- Button trigger modal -->
 
-
+<button id="capture">Take a Screenshot!</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -228,7 +228,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 8
+              Proceed 9
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -280,7 +280,7 @@
                
                 <div class="specific">
                   <button onclick="start();">Click To Screen Record</button>
-                  <button id="capture">Take a Screenshot!</button>
+                  <!-- <button id="capture">Take a Screenshot!</button> -->
                   <video width="700" height="400"></video>
               </div>
               </div>
@@ -333,10 +333,6 @@
   </div>
 </div>
 </div>
-
-
-
- 
 
 
   
@@ -563,44 +559,17 @@ if("edg" || "edge" || "opr"){
 // }
 
 
+const modelViewerCapture = document.querySelector("imgSize");
 
-
-    
-    const start = async() => {
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video : {
-                    mediaSource : "screen",
-                },
-            });
-            const data = [];
-            const mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.ondataavailable=(e)=>{
-                data.push(e.data);
-            }
-            mediaRecorder.start();
-            mediaRecorder.onstop=(e)=> {
-                document.querySelector("video").src = URL.createObjectURL(
-                    new Blob(data, {
-                        type: data[0].type,
-
-                    })
-                )
-            }
-        };
-
-
-const cameraControl = document.querySelector("model-viewer#imgSize");
-if ($(cameraControl).attr('camera-controls', '' )) {
-  document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(cameraControl, {
-            onrendered: function(canvas) {
+document.querySelector('#capture').addEventListener('click', function() {
+        html2canvas(document.querySelector('imgSize'), {
+            onrendered: function(modelViewerCapture) {
                 // document.body.appendChild(canvas);
-              return Canvas2Image.saveAsPNG(canvas);
+              return Canvas2Image.saveAsPNG(modelViewerCapture);
             }
         });
-      
-    });
-}
+  });
+
 
   </script>
 
