@@ -227,7 +227,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 9
+              Proceed 10
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -564,8 +564,6 @@ if("edg" || "edge" || "opr"){
 
 
     
-
-
     const start = async() => {
             const stream = await navigator.mediaDevices.getDisplayMedia({
                 video : {
@@ -587,17 +585,23 @@ if("edg" || "edge" || "opr"){
                 )
             }
         };
+
+        const cameraControl = document.querySelector("model-viewer#imgSize")
+  const controlArrt = cameraControl.getAttributeNode("camera-controls", "");
+// const cameraControl = document.getElementById("model-viewer#imgSize").getAttribute("camera-controls");
+
+
         document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.getAttributeNode('camera-controls'), {
+         alert(controlArrt);
+        html2canvas(controlArrt, {
             onrendered: function(canvas) {
-              alert("yes");
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
             }
         });
       
     });
-    console.log(getAttributeNode)
+    // console.log(cameraControl)
   </script>
 
 
