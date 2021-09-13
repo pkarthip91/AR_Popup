@@ -196,6 +196,7 @@
 <!-- Button trigger modal -->
 
 
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen">
@@ -227,7 +228,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 12
+              Proceed 8
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -563,6 +564,7 @@ if("edg" || "edge" || "opr"){
 
 
 
+
     
     const start = async() => {
             const stream = await navigator.mediaDevices.getDisplayMedia({
@@ -586,15 +588,11 @@ if("edg" || "edge" || "opr"){
             }
         };
 
-     
-    // const cameraControl = document.getElementById("model-viewer#imgSize").getAttribute("camera-controls");
 
-
-        document.querySelector('#capture').addEventListener('click', function() {
-          const cameraControl = document.querySelector("model-viewer#imgSize")
-      const controlArrt = cameraControl.getAttributeNode("camera-controls", "");
-      alert(controlArrt);
-        html2canvas(controlArrt == true, {
+const cameraControl = document.querySelector("model-viewer#imgSize");
+if ($(cameraControl).attr('camera-controls', '' )) {
+  document.querySelector('#capture').addEventListener('click', function() {
+        html2canvas(cameraControl, {
             onrendered: function(canvas) {
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
@@ -602,7 +600,8 @@ if("edg" || "edge" || "opr"){
         });
       
     });
-    // console.log(cameraControl)
+}
+
   </script>
 
 
