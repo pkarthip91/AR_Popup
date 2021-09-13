@@ -226,10 +226,8 @@
               Proceed 1
             </button> -->
 
-            
-      
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 1
+              Proceed 2
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -562,17 +560,14 @@ if("edg" || "edge" || "opr"){
 
 
 
-const start = async() => {
+    const start = async() => {
             const stream = await navigator.mediaDevices.getDisplayMedia({
                 video : {
                     mediaSource : "screen",
                 },
             });
-
             const data = [];
-
             const mediaRecorder = new MediaRecorder(stream);
-
             mediaRecorder.ondataavailable=(e)=>{
                 data.push(e.data);
             }
@@ -585,12 +580,9 @@ const start = async() => {
                     })
                 )
             }
-
         };
-
-
         document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('.specific'), {
+        html2canvas(document.querySelector('model-viewer#imgSize'), {
             onrendered: function(canvas) {
                 // document.body.appendChild(canvas);
               return Canvas2Image.saveAsPNG(canvas);
