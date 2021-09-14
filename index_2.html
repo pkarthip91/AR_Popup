@@ -197,6 +197,8 @@
 
 <!-- <button id="capture">Take a Screenshot!</button> -->
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen">
@@ -228,7 +230,7 @@
             </button> -->
 
             <button slot="ar-button" class="hide-apped" id="ar-button">
-              Proceed 10
+              Proceed 11
             </button>
       
             <button class="rounded-circle-btn ar-visible d-none" id="close-model">
@@ -278,9 +280,14 @@
                   </svg>
                 </div>
                
+                <button id="start-camera">Start Camera</button>
+                <!-- <video id="video" width="320" height="240" autoplay></video> -->
+                <button id="click-photo">Click Photo</button>
+                <canvas id="canvas" width="320" height="240"></canvas>
+
                 <div class="specific">
                   <button onclick="start();">Click To Screen Record</button>
-                  <button id="capture">Take a Screenshot!</button>
+                  <!-- <button id="capture">Take a Screenshot!</button> -->
                   <video width="700" height="400"></video>
               </div>
               </div>
@@ -363,6 +370,24 @@
 
 
   <script type="module">
+
+
+let camera_button = document.querySelector("#start-camera");
+let modelViewer = document.querySelector("#imgSize");
+let click_button = document.querySelector("#click-photo");
+let canvas = document.querySelector("#canvas");
+
+camera_button.addEventListener('click', async function() {
+   	let stream = await navigator.mediaDevices.getUserMedia({ modelViewer: true, audio: false });
+     modelViewer.srcObject = stream;
+});
+
+click_button.addEventListener('click', function() {
+   	canvas.getContext('2d').drawImage(modelViewer, 0, 0, canvas.width, canvas.height);
+   	let image_data_url = canvas.toDataURL('image/jpeg');
+   	// data url of the image
+   	console.log(image_data_url);
+});
 
 
     // Color Change texture
@@ -560,15 +585,16 @@ if("edg" || "edge" || "opr"){
 
 
 const modelViewerCapture = document.querySelector("imgSize");
-
 document.querySelector('#capture').addEventListener('click', function() {
-        html2canvas(document.querySelector('imgSize'), {
-            onrendered: function(modelViewerCapture) {
-                // document.body.appendChild(canvas);
-              return Canvas2Image.saveAsPNG(modelViewerCapture);
-            }
+  html2canvas(document.body).then(function(canvas) {
+        // Export canvas as a blob 
+        canvas.toBlob(function(blob) {
+            // Generate file download
+            window.saveAs(blob, "yourwebsite_screenshot.png");
         });
+    });
   });
+
 
 
   </script>
