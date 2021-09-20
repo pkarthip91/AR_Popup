@@ -90,7 +90,6 @@
     </div>
   </div>
   </div>
-
   </div>
   </div>
   </div>
@@ -112,21 +111,160 @@
   <!-- main Js -->
   <script src="js/main.js"></script>
 
+  
+  <script type="module">
+  
+
+    // document.getElementById('videoPlay').play();
+
+    // Color Change texture
+    const modelViewerTexture = document.querySelector("model-viewer#imgSize");
+    modelViewerTexture.addEventListener("load", (ev) => {
+      let material = modelViewerTexture.model.materials[0];
+      let applyPBRTexture = (channel, event) => {
+        material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
+      }
+      document.querySelector('#colorChangeVariant').addEventListener('click', (event) => {
+        applyPBRTexture('baseColorTexture', event);
+      });
+    })
+
+    // // Default Change Yaw orientation Change 
+    const modelViewerTransform = document.querySelector("model-viewer#imgSize");
+    const roll = document.querySelector('#roll');
+    const pitch = document.querySelector('#pitch');
+    const yaw = document.querySelector('#yaw');
+    const frame = document.querySelector('#frame');
+
+    frame.addEventListener('click', function () {
+      modelViewerTransform.updateFraming();
+    });
+
+    const updateOrientation = () => {
+      modelViewerTransform.orientation = `${roll.value = "0"}deg ${pitch.value = "0"}deg ${yaw.value = "90"}deg `;
+    };
+
+    roll.addEventListener('input', () => {
+      updateOrientation();
+    });
+    pitch.addEventListener('input', () => {
+      updateOrientation();
+    });
+    yaw.addEventListener('input', () => {
+      updateOrientation();
+    });
+
+    $("#ar-button").click(function (e) {
+      updateOrientation();
+    });
+
+  
+    // Quick Look modes change animation
+    // const modelViewerImage = document.querySelector("model-viewer#imgSize");
+    // modelViewerImage.addEventListener("load", (ev) => {
+    //   modelViewerImage.getElementById("imgSize").style.height = "42px"
+    //   modelViewerImage.getElementById("imgSize").removeAttribute("src");
+    //   modelViewerImage.getElementById("hide-btn-main").style.display = "none";
+
+    // })
+  </script>
+
   <script>
-     $(document).ready(function () {
+
+    $(document).ready(function () {
+      
+  // AR close button 
+      $('#close-model').click(function () {
+        $('#imgSize').hide("fast");
+        $('.ar-visible').addClass("d-none")
+        document.getElementById("imgSize").removeAttribute("src");
+        window.history.go(-1)
+        //location.reload(true);
+      });
+
+      //Toggle fullscree
+      $(".chat-bot-icon").click(function (e) {
+        $(this).children('.animate-img').toggleClass('hide');
+        $(this).children('span').toggleClass('hide');
+        $(this).children('svg').toggleClass('animate');
+        $('.chat-screen').toggleClass('show-chat');
+      });
+    });
+
+    $(document).ready(function () {
      
-     $("#ar-button").click(function (e) {
+      $("#ar-button").click(function (e) {
         document.getElementById("imgSize").setAttribute("src", "./img/glb/629200_Thule_Motion_XT_M_HP_V1_Pos0.glb");
+        //document.getElementById("imgSize").setAttribute("ios-src", "./img/glb/613500_Thule_Vector_Alpine_hp_V1.usdz");
         $("#hide-btn-main").css("display", "block");
         $("#hide-btn-main").css("opacity", "1");
         $("#imgSize").css("opacity", "1");
         $(".rounded-circle-btn").css("display", "block");
         $('.ar-visible').removeClass("d-none")
         document.getElementById("imgSize").style.height = "42px"
+        // updateOrientation();
       });
+
+         const modelView = document.querySelector("model-viewer#imgSize");
+        if (window.location.pathname == "./vector.html") {
+          $("#hide-btn-main").css("display", "block");
+          $("#imgSize").css("opactiy", "0");
+          document.getElementById("imgSize").removeAttribute("src");
+          window.location.reload(true)
+        } else {
+          $("#hide-btn-main").css("display", "none");
+          $("#imgSize").css("height", "42px");
+         // document.getElementById("imgSize").style.height = "50px".
+          document.getElementById("imgSize").removeAttribute("src");
+          // document.getElementById("hide-btn-main").style.display = "none";
+        }
     });
 
+    
+
+
+
+$(".equel-grid").click(function() {
+    // Select all list items
+    var listItems = $(".equel-grid");
+    // Remove 'active' tag for all list items
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].classList.remove("active-grid");
+    }
+    // Add 'active' tag for currently selected item
+    this.classList.add("active-grid");
+});
+
+$(".color-btn").click(function() {
+    // Select all list items
+    var listItems = $(".color-btn");
+    // Remove 'active' tag for all list items
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].classList.remove("active-color");
+    }
+    // Add 'active' tag for currently selected item
+    this.classList.add("active-color");
+});
+
+$(".size-btn").click(function() {
+    // Select all list items
+    var listItems = $(".size-btn");
+    // Remove 'active' tag for all list items
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].classList.remove("active-color");
+    }
+    // Add 'active' tag for currently selected item
+    this.classList.add("active-color");
+});
+
+
+
+    
+
   </script>
+
+
+
 
 </body>
 
